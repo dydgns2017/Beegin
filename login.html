@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>로그인 서비스</title>
+        <meta charset="utf-8">
+    </head>
+    <script src="beegin.base.js"></script>
+    <body>
+        <div style="text-align: center;">
+            <h3>로그인 서비스</h3>
+            <input type="text" id="user_name" placeholder="아이디"><br>
+            <input type="password" id="user_password" placeholder="패스워드"><br>
+            <button onclick="login();">로그인</button>
+        </div>
+    </body>
+    <script>
+        function login(){
+            var data = new FormData();
+            data.append("func", "login");
+            data.append("id", document.getElementById("user_name").value);
+            data.append("pw", document.getElementById("user_password").value);
+            POST("design_pattern.php", data, function(resp){ 
+                console.log(resp.data);
+            });
+        }
+    </script>
+</html>
