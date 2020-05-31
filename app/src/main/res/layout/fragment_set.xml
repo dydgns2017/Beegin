@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.SetFragment">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/LinerNotice"
+        android:layout_marginTop="5dp">
+
+    <ImageView
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:src="@drawable/baseline_notifications_black_48dp"
+        />
+
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:text=" 공지 사항"
+        android:textSize="36dp"/>
+
+</LinearLayout>
+
+    <View
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="#000000"/>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/LinerQuestion"
+        android:layout_marginTop="5dp">
+
+    <ImageView
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:src="@drawable/baseline_question_answer_black_48dp"/>
+
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:text=" 질문과 답변"
+        android:textSize="36dp"/>
+
+</LinearLayout>
+
+    <View
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="#000000"/>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/LinerHelp"
+        android:layout_marginTop="5dp">
+
+    <ImageView
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:src="@drawable/baseline_help_black_48dp"/>
+
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:text=" 도움말"
+        android:textSize="36dp"/>
+
+</LinearLayout>
+
+    <View
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="#000000"/>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/LinerSetting"
+        android:layout_marginTop="5dp">
+
+    <ImageView
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:src="@drawable/baseline_settings_black_48dp"/>
+
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:text=" 설정"
+        android:textSize="36dp"/>
+
+</LinearLayout>
+
+    <View
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="#000000"/>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/LinerLogout"
+        android:layout_marginTop="5dp">
+
+    <ImageView
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:src="@drawable/baseline_notifications_black_48dp"/>
+
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:text=" 로그아웃"
+        android:textSize="36dp"/>
+
+</LinearLayout>
+
+    <View
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="#000000"/>
+
+</LinearLayout>
+
+</FrameLayout>

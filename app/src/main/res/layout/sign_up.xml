@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/loginbackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디"
+        />
+
+
+    <EditText
+        android:id="@+id/EdtId"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:textStyle="bold"
+        android:background="#11000000"
+        android:ems="10"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:drawableLeft="@drawable/ic_action_user"
+        android:inputType="textPersonName"
+        android:hint="  UserName"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/EdtPassward"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/EdtId"
+        android:layout_alignStart="@+id/EdtId"
+        android:drawableLeft="@drawable/ic_action_pass"
+        android:layout_below="@+id/EdtId"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="  Password"
+        android:textStyle="bold"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+
+        android:textSize="15dp"
+        android:background="#11000000"
+        android:inputType="textPassword" />
+
+</RelativeLayout>

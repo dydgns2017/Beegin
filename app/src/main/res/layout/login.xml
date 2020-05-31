@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbackground"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="225dp"
+        android:layout_height="159dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="86dp"
+        android:background="@drawable/login_back" />
+
+    <EditText
+        android:id="@+id/EdtId"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:textStyle="bold"
+        android:background="#11000000"
+        android:ems="10"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:drawableLeft="@drawable/ic_action_user"
+        android:inputType="textPersonName"
+        android:hint="  UserName"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/EdtPassward"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/EdtId"
+        android:layout_alignStart="@+id/EdtId"
+        android:drawableLeft="@drawable/ic_action_pass"
+        android:layout_below="@+id/EdtId"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="  Password"
+        android:textStyle="bold"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+
+        android:textSize="15dp"
+        android:background="#11000000"
+        android:inputType="textPassword" />
+
+
+    <Button
+        android:id="@+id/btnlogin"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/EdtPassward"
+        android:layout_alignStart="@+id/EdtPassward"
+        android:layout_below="@+id/EdtPassward"
+        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/intro_login_btn_shape"
+        android:textSize="15dp"
+        android:ems="10"
+        android:text="Login" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnlogin"
+        android:layout_alignStart="@+id/btnlogin"
+        android:textStyle="bold"
+        android:layout_below="@+id/btnlogin"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="55dp"
+        android:layout_centerHorizontal="true"
+        style="?android:borderlessButtonStyle"
+        android:textColor="#000000"
+        android:text="Sign Up"/>
+
+</RelativeLayout>

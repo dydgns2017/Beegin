@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/baseline_home_black_18dp"
+        android:title="@string/nav_home" />
+    <item
+        android:id="@+id/nav_plan"
+        android:icon="@drawable/baseline_watch_later_black_18dp"
+        android:title="@string/nav_plan" />
+
+
+    <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/outline_textsms_black_18dp"
+        android:title="Chatting" />
+
+    <item
+        android:id="@+id/nav_result"
+        android:icon="@drawable/outline_table_chart_black_18dp"
+        android:title="@string/nav_result" />
+
+    <item
+        android:id="@+id/nav_set"
+        android:icon="@drawable/baseline_settings_black_18dp"
+        android:title="Setting" />
+
+</menu>
