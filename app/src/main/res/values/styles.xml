@@ -9,11 +9,33 @@
 
         <!-- 상단바 -->
         <item name="colorPrimaryDark">#008577</item>
-        <item name="colorAccent">#ffffa8</item>
+        <item name="colorAccent">#F6BB43</item>
     </style>
 
     <style name="SplashThme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">@drawable/test</item>
     </style>
+
+    <style name="Widget.Design.TextInputLayout" parent="AppTheme">
+        <item name="hintTextAppearance">@style/AppTheme.TextFloatLabelAppearance</item>
+        <item name="errorTextAppearance">@style/AppTheme.TextErrorAppearance</item>
+        <item name="counterTextAppearance">@style/TextAppearance.Design.Counter</item>
+        <item name="counterOverflowTextAppearance">@style/TextAppearance.Design.Counter.Overflow</item>
+    </style>
+
+    <style name="AppTheme.TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
+        <!-- Floating label appearance here -->
+        <item name="android:textColor">#F6BB43</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AppTheme.TextErrorAppearance" parent="TextAppearance.Design.Error">
+        <!-- Error message appearance here -->
+        <item name="android:textColor">#F6BB43</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+
 
 </resources>

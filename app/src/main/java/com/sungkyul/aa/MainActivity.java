@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Home");
+        setTitle("홈");
 
         setBottomBar();
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.nav_home:
-                        setTitle("Home");
+                        setTitle("홈");
                         mMainNav.setItemBackgroundResource(R.color.colorPrimary);
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.PRIMARY_STAUTS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.nav_plan:
-                        setTitle("Plan");
+                        setTitle("계획");
                         mMainNav.setItemBackgroundResource(R.color.colorAccent);
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.ACCENT_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.nav_result :
-                        setTitle("Result");
+                        setTitle("결과");
                         mMainNav.setItemBackgroundResource(R.color.colorTest);
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.YELLOW_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_chat:
-                        setTitle("Chatting");
+                        setTitle("채팅");
                         mMainNav.setItemBackgroundResource(R.color.colorBlue);
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.nav_set:
-                        setTitle("Setting");
+                        setTitle("환경설정");
                         mMainNav.setItemBackgroundResource(R.color.colorPurple);
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.PURPLE_STAUTS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
