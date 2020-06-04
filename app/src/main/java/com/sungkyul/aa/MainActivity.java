@@ -1,16 +1,39 @@
 package com.sungkyul.aa;
 
+/*
+ 2020. 06. 25. sqlite 추가 및 list adapter 추가
+ 추가 및 수정된 클래스
+    - AddWorkActivity.java
+    - Option.java
+    - activity_addwork.xml
+    - list_item.xml
+
+    - MainActivity
+    - activity_main.xml
+ */
+
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sungkyul.aa.Fragment.ChatFragment;
@@ -18,6 +41,9 @@ import com.sungkyul.aa.Fragment.HomeFragment;
 import com.sungkyul.aa.Fragment.PlanFragment;
 import com.sungkyul.aa.Fragment.ResultFragment;
 import com.sungkyul.aa.Fragment.SetFragment;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,14 +60,19 @@ public class MainActivity extends AppCompatActivity {
 
     private Activity activity;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Home");
 
+        setBottomBar();
+
+    }
 
 
+    public void setBottomBar(){
         mMainFrame = (FrameLayout)findViewById(R.id.main_frame);
         mMainNav = (BottomNavigationView)findViewById(R.id.main_nav);
 
@@ -118,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
                         ft.commit();
                         return true;
 
-                        default:
-                            return false;
+                    default:
+                        return false;
 
                 }
             }

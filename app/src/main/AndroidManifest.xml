@@ -32,6 +32,7 @@
         <activity android:label="Logout 액티비티" android:name=".setFragment.LogoutActivity"/>
         <activity android:label="Question 액티비티" android:name=".setFragment.QuestionActivity"/>
         <activity android:label="Setting 액티비티" android:name=".setFragment.SettingActivity"/>
+        <activity android:name=".AddWorkActivity"/>
 </application>
 
 
