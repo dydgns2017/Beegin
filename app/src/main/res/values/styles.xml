@@ -5,10 +5,10 @@
         <!-- Customize your theme here. -->
 
         <!-- 타이틀바 -->
-        <item name="colorPrimary">#008577</item>
+        <item name="colorPrimary">#FFFFAA00</item>
 
         <!-- 상단바 -->
-        <item name="colorPrimaryDark">#008577</item>
+        <item name="colorPrimaryDark">#FFFFAA00</item>
         <item name="colorAccent">#F6BB43</item>
 
 

@@ -93,10 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         setTitle("홈");
-                        mMainNav.setItemBackgroundResource(R.color.colorPrimary);
-                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.PRIMARY_STAUTS_BAR);
+                        mMainNav.setItemBackgroundResource(R.color.colorTest);
+                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.YELLOW_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
-                                new ColorDrawable(Color.parseColor("#008577")));
+                                new ColorDrawable(Color.parseColor("#FFFFAA00")));
 
                         getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.littledeep_bee_style1));
                         ft.replace(R.id.main_frame, homeFragment);
@@ -119,10 +119,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_result :
                         setTitle("결과");
-                        mMainNav.setItemBackgroundResource(R.color.colorTest);
-                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.YELLOW_STATUS_BAR);
+                        mMainNav.setItemBackgroundResource(R.color.colorPrimary);
+                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.PRIMARY_STAUTS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
-                                new ColorDrawable(Color.parseColor("#FFFFAA00")));
+                                new ColorDrawable(Color.parseColor("#008577")));
                         ft.replace(R.id.main_frame, resultFragment);
                         ft.commit();
                         return true;

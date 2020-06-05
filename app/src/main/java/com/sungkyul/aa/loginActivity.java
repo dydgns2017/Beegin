@@ -37,8 +37,9 @@ public class loginActivity extends Activity {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     }else{
-                        Toast.makeText(getApplicationContext(), "아이디 비밀번호가 틀렸습니다 (id : test, pwd : test)",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "아이디 비밀번호가 틀렸어? (id,pwd : test)",Toast.LENGTH_LONG).show();
                     }
+
 
             }
         });
@@ -50,9 +51,9 @@ public class loginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "click_signUp", Toast.LENGTH_LONG).show();
-/*                Intent intent = new Intent(getApplicationContext(), SignUp.class);
+               Intent intent = new Intent(getApplicationContext(), SignUp.class);
                 startActivity(intent);
-                finish();*/
+                finish();
             }
         });
 

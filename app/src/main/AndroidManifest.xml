@@ -26,7 +26,7 @@
     </activity>
 
         <activity android:name=".loginActivity"/>
-
+        <activity android:name=".SignUp"/>
         <activity android:label="Notice 액티비티" android:name=".setFragment.NoticeActivity"/>
         <activity android:label="Help 액티비티" android:name=".setFragment.HelpActivity"/>
         <activity android:label="Logout 액티비티" android:name=".setFragment.LogoutActivity"/>

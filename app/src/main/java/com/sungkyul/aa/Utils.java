@@ -15,7 +15,7 @@ public class Utils {
         YELLOW_STATUS_BAR( R.color.colorTest ),
         BLUE_STATUS_BAR( R.color.colorBlue ),
         PURPLE_STAUTS_BAR( R.color.colorPurple),
-        PRIMARY_STAUTS_BAR( R.color.colorPrimary);
+        PRIMARY_STAUTS_BAR(R.color.colorPrimary);
 
 
         private int backgroundColorId;
