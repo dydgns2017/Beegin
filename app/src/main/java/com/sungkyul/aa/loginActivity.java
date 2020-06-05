@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatEditText;
+
 public class loginActivity extends Activity {
 
 
@@ -26,9 +28,17 @@ public class loginActivity extends Activity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    finish();
+
+                EditText id = (EditText)findViewById(R.id.id);
+                EditText pass = (EditText)findViewById(R.id.password);
+
+                    if("test".equals(id.getText().toString().trim()) && "test".equals(pass.getText().toString().trim())) {
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(getApplicationContext(), "아이디 비밀번호가 틀렸습니다 (id : test, pwd : test)",Toast.LENGTH_LONG).show();
+                    }
 
             }
         });

@@ -10,6 +10,9 @@
         <!-- 상단바 -->
         <item name="colorPrimaryDark">#008577</item>
         <item name="colorAccent">#F6BB43</item>
+
+
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="SplashThme" parent="@android:style/Theme.Light.NoTitleBar">
@@ -34,6 +37,8 @@
         <item name="android:textColor">#F6BB43</item>
         <item name="android:textSize">10sp</item>
     </style>
+
+
 
 
 
