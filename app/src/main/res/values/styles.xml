@@ -5,11 +5,11 @@
         <!-- Customize your theme here. -->
 
         <!-- 타이틀바 -->
-        <item name="colorPrimary">#FFFFAA00</item>
+        <item name="colorPrimary">#87cefa</item>
 
         <!-- 상단바 -->
-        <item name="colorPrimaryDark">#FFFFAA00</item>
-        <item name="colorAccent">#F6BB43</item>
+        <item name="colorPrimaryDark">#87cefa</item>
+        <item name="colorAccent">#87cefa</item>
 
 
         <item name="android:windowContentTransitions">true</item>
@@ -28,13 +28,13 @@
 
     <style name="AppTheme.TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
         <!-- Floating label appearance here -->
-        <item name="android:textColor">#F6BB43</item>
+        <item name="android:textColor">#87cefa</item>
         <item name="android:textSize">15sp</item>
     </style>
 
     <style name="AppTheme.TextErrorAppearance" parent="TextAppearance.Design.Error">
         <!-- Error message appearance here -->
-        <item name="android:textColor">#F6BB43</item>
+        <item name="android:textColor">#FF0000</item>
         <item name="android:textSize">10sp</item>
     </style>
 

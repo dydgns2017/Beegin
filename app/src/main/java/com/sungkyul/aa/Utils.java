@@ -18,6 +18,8 @@ public class Utils {
         PRIMARY_STAUTS_BAR(R.color.colorPrimary);
 
 
+
+
         private int backgroundColorId;
 
         StatusBarColorType(int backgroundColorId){

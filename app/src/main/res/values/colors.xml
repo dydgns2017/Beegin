@@ -4,10 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+<!--    <color name="colorTest">#FFFFAA00</color>-->
+
     <color name="colorTest">#FFFFAA00</color>
 
     <color name="colorPurple">#7E57C2</color>
-    <color name="colorBlue">#42A5F5</color>
+    <color name="colorBlue">#87cefa</color>
 
 
 

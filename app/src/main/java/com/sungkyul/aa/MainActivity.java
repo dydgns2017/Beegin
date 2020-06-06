@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         setFragment = new SetFragment();
         resultFragment = new ResultFragment();
         chatFragment = new ChatFragment();
-        
+
         activity = this;
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -96,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         setTitle("홈");
-                        mMainNav.setItemBackgroundResource(R.color.colorTest);
-                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.YELLOW_STATUS_BAR);
+                        mMainNav.setItemBackgroundResource(R.color.colorBlue);
+                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
-                                new ColorDrawable(Color.parseColor("#FFFFAA00")));
+                                new ColorDrawable(Color.parseColor("#87cefa")));
 
                         getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.littledeep_bee_style1));
 
@@ -113,10 +113,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_plan:
                         setTitle("계획");
-                        mMainNav.setItemBackgroundResource(R.color.colorAccent);
-                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.ACCENT_STATUS_BAR);
+                        mMainNav.setItemBackgroundResource(R.color.colorBlue);
+                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
-                                new ColorDrawable(Color.parseColor("#D81B60")));
+                                new ColorDrawable(Color.parseColor("#87cefa")));
                         ft.replace(R.id.main_frame, planFragment);
                         ft.commit();
 
@@ -125,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_result :
                         setTitle("결과");
-                        mMainNav.setItemBackgroundResource(R.color.colorPrimary);
-                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.PRIMARY_STAUTS_BAR);
+                        mMainNav.setItemBackgroundResource(R.color.colorBlue);
+                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
-                                new ColorDrawable(Color.parseColor("#008577")));
+                                new ColorDrawable(Color.parseColor("#87cefa")));
                         ft.replace(R.id.main_frame, resultFragment);
                         ft.commit();
                         return true;
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                         mMainNav.setItemBackgroundResource(R.color.colorBlue);
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
-                                new ColorDrawable(Color.parseColor("#42A5F5")));
+                                new ColorDrawable(Color.parseColor("#87cefa")));
                         ft.replace(R.id.main_frame, chatFragment);
                         ft.commit();
                         return true;
@@ -146,10 +146,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_set:
                         setTitle("환경설정");
-                        mMainNav.setItemBackgroundResource(R.color.colorPurple);
-                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.PURPLE_STAUTS_BAR);
+                        mMainNav.setItemBackgroundResource(R.color.colorBlue);
+                        Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
-                                new ColorDrawable(Color.parseColor("#7E57C2")));
+                                new ColorDrawable(Color.parseColor("#87cefa")));
                         ft.replace(R.id.main_frame, setFragment);
                         ft.commit();
                         return true;

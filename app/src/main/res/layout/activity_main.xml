@@ -13,7 +13,7 @@
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
 
-        app:itemBackground="@color/colorTest"
+        app:itemBackground="@color/colorBlue"
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/nav_items"
