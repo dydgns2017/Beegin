@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("홈");
+        homeFragment = new HomeFragment();
+
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, homeFragment).commitAllowingStateLoss();
+
         setBottomBar();
 
     }
@@ -75,13 +80,11 @@ public class MainActivity extends AppCompatActivity {
         mMainFrame = (FrameLayout)findViewById(R.id.main_frame);
         mMainNav = (BottomNavigationView)findViewById(R.id.main_nav);
 
-
-        homeFragment = new HomeFragment();
         planFragment = new PlanFragment();
         setFragment = new SetFragment();
         resultFragment = new ResultFragment();
         chatFragment = new ChatFragment();
-
+        
         activity = this;
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -99,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
                                 new ColorDrawable(Color.parseColor("#FFFFAA00")));
 
                         getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.littledeep_bee_style1));
+
+
+
                         ft.replace(R.id.main_frame, homeFragment);
                         ft.commit();
 

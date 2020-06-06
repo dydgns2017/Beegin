@@ -53,7 +53,6 @@ public class loginActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "click_signUp", Toast.LENGTH_LONG).show();
                Intent intent = new Intent(getApplicationContext(), SignUp.class);
                 startActivity(intent);
-                finish();
             }
         });
 
