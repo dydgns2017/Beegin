@@ -1,6 +1,7 @@
 package com.sungkyul.aa.Fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,8 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.sungkyul.aa.R;
+import com.sungkyul.aa.setFragment.HelpActivity;
+import com.sungkyul.aa.setFragment.LogoutActivity;
+import com.sungkyul.aa.setFragment.NoticeActivity;
+import com.sungkyul.aa.setFragment.QuestionActivity;
+import com.sungkyul.aa.setFragment.SettingActivity;
 
 
 /**
@@ -29,10 +36,12 @@ public class SetFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_set, container, false);
-/*
-        LinerNotice = (LinearLayout)getView().findViewById(R.id.LinerNotice);
+
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_set, container, false);
+
+
+        //공지사항 창
+        LinerNotice = rootView.findViewById(R.id.LinerNotice);
 
         LinerNotice.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -45,7 +54,8 @@ public class SetFragment extends Fragment {
             }
         });
 
-        LinerQuestion = (LinearLayout)getView().findViewById(R.id.LinerQuestion);
+        //질문과 답변 창
+        LinerQuestion = rootView.findViewById(R.id.LinerQuestion);
 
         LinerQuestion.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -58,7 +68,8 @@ public class SetFragment extends Fragment {
             }
         });
 
-        LinerHelp = (LinearLayout)getView().findViewById(R.id.LinerHelp);
+        //도움말 창
+        LinerHelp = rootView.findViewById(R.id.LinerHelp);
 
         LinerHelp.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -71,7 +82,8 @@ public class SetFragment extends Fragment {
             }
         });
 
-        LinerSetting = (LinearLayout)getView().findViewById(R.id.LinerSetting);
+        //설정창
+        LinerSetting = rootView.findViewById(R.id.LinerSetting);
 
         LinerSetting.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -84,7 +96,8 @@ public class SetFragment extends Fragment {
             }
         });
 
-        LinerLogout = (LinearLayout)getView().findViewById(R.id.LinerLogout);
+        //로그아웃 창
+        LinerLogout = rootView.findViewById(R.id.LinerLogout);
 
         LinerLogout.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -95,7 +108,13 @@ public class SetFragment extends Fragment {
 
                 startActivity(intent);
             }
-        });*/
+        });
+
+
+        return rootView;
+
+
+
     }
 
 }

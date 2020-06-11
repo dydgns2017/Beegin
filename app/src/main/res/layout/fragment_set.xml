@@ -30,7 +30,7 @@
         android:text=" 공지 사항"
         android:textSize="36dp"/>
 
-</LinearLayout>
+    </LinearLayout>
 
     <View
         android:layout_height="2dp"
@@ -55,7 +55,7 @@
         android:text=" 질문과 답변"
         android:textSize="36dp"/>
 
-</LinearLayout>
+    </LinearLayout>
 
     <View
         android:layout_height="2dp"
