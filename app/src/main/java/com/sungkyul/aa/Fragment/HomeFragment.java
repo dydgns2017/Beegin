@@ -53,12 +53,19 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, null);
+
+        // 처음에는 보이지 않게 설정
         chrono = (Chronometer) view.findViewById(R.id.chronometer1);
+        chrono.setVisibility(View.INVISIBLE);
+
+
         imgMain = (ImageView)view.findViewById(R.id.mainImage);
         txtSubTitle = (TextView)view.findViewById(R.id.mainSubTitle);
         txtTitle = (TextView)view.findViewById(R.id.mainTitle);
 
+        // 버튼이 처음에는 보이지 않게 설정
         btnStop = (Button)view.findViewById(R.id.btnStop);
+        btnStop.setVisibility(View.INVISIBLE);
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,13 +81,15 @@ public class HomeFragment extends Fragment {
                 dateEnd.setText(formatDate);    // TextView 에 현재 시간 문자열 할당  */
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("활동 시작").setMessage("활동을 시작하시겠습니까??");
+                builder.setTitle("활동 종료").setMessage("활동을 종료하시겠습니까??");
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        Toast.makeText(getActivity(), "활동이 시작되었습니다.", Toast.LENGTH_LONG).show();
+                        chrono.setVisibility(View.INVISIBLE);
+                        btnStop.setVisibility(View.INVISIBLE);
+                        Toast.makeText(getActivity(), "활동이 종료되었습니다.", Toast.LENGTH_LONG).show();
                         imgMain.setImageResource(R.drawable.no);
                         txtTitle.setText("하는게 없습니다...");
                         txtSubTitle.setText("에에 !! 여기까지 테스트를 해보셨다구요??");
@@ -98,15 +107,6 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity().getApplicationContext(), "Cancel Click", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                builder.setNeutralButton("Neutral", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        Toast.makeText(getActivity().getApplicationContext(), "Neutral Click", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
 
@@ -126,10 +126,7 @@ public class HomeFragment extends Fragment {
         final GridView gv = (GridView) view.findViewById(R.id.gridView1);
         MyGridAdapter gAdapter = new MyGridAdapter(getActivity());
         gv.setAdapter(gAdapter);
-
-
         return view;
-
     }
 
 
@@ -203,6 +200,8 @@ public class HomeFragment extends Fragment {
                         public void onClick(DialogInterface dialog, int id)
                         {
                             Toast.makeText(getActivity(), "활동이 시작되었습니다.", Toast.LENGTH_LONG).show();
+                            chrono.setVisibility(View.VISIBLE);
+                            btnStop.setVisibility(View.VISIBLE);
                             imgMain.setImageResource(posterID[position]);
                             txtTitle.setText(posterText[position]);
                             txtSubTitle.setText("새로운 일정을 시작하셨습니다!!@@");

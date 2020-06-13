@@ -68,22 +68,14 @@ public class MainActivity extends AppCompatActivity {
         setTitle("홈");
         homeFragment = new HomeFragment();
 
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, homeFragment).commitAllowingStateLoss();
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, homeFragment).commit();
         setBottomBar();
-
     }
 
 
     public void setBottomBar(){
         mMainFrame = (FrameLayout)findViewById(R.id.main_frame);
         mMainNav = (BottomNavigationView)findViewById(R.id.main_nav);
-
-        planFragment = new PlanFragment();
-        setFragment = new SetFragment();
-        resultFragment = new ResultFragment();
-        chatFragment = new ChatFragment();
 
         activity = this;
 
@@ -104,9 +96,20 @@ public class MainActivity extends AppCompatActivity {
                         getSupportActionBar().setIcon(getResources().getDrawable(R.drawable.littledeep_bee_style1));
 
 
+                        if(homeFragment == null) {
+                            homeFragment = new HomeFragment();
+                            getSupportFragmentManager().beginTransaction().add(R.id.main_frame, homeFragment).commit();
+                        }
 
+                        Toast.makeText(getApplicationContext(), "home", Toast.LENGTH_LONG).show();
+                        if(homeFragment != null) getSupportFragmentManager().beginTransaction().show(homeFragment).commit();
+                        if(planFragment != null) getSupportFragmentManager().beginTransaction().hide(planFragment).commit();
+                        if(setFragment != null) getSupportFragmentManager().beginTransaction().hide(setFragment).commit();
+                        if(resultFragment != null) getSupportFragmentManager().beginTransaction().hide(resultFragment).commit();
+                        if(chatFragment != null) getSupportFragmentManager().beginTransaction().hide(chatFragment).commit();
+/*
                         ft.replace(R.id.main_frame, homeFragment);
-                        ft.commit();
+                        ft.commit();*/
 
                         return true;
 
@@ -117,8 +120,20 @@ public class MainActivity extends AppCompatActivity {
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
                                 new ColorDrawable(Color.parseColor("#87cefa")));
+
+                        if(planFragment == null) {
+                            planFragment = new PlanFragment();
+                            getSupportFragmentManager().beginTransaction().add(R.id.main_frame, planFragment).commit();
+                        }
+                        if(planFragment != null) getSupportFragmentManager().beginTransaction().show(planFragment).commit();
+                        if(homeFragment != null) getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
+                        if(setFragment != null) getSupportFragmentManager().beginTransaction().hide(setFragment).commit();
+                        if(resultFragment != null) getSupportFragmentManager().beginTransaction().hide(resultFragment).commit();
+                        if(chatFragment != null) getSupportFragmentManager().beginTransaction().hide(chatFragment).commit();
+/*
                         ft.replace(R.id.main_frame, planFragment);
                         ft.commit();
+*/
 
                         return true;
 
@@ -129,8 +144,19 @@ public class MainActivity extends AppCompatActivity {
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
                                 new ColorDrawable(Color.parseColor("#87cefa")));
-                        ft.replace(R.id.main_frame, resultFragment);
-                        ft.commit();
+
+                        if(resultFragment == null) {
+                            resultFragment = new ResultFragment();
+                            getSupportFragmentManager().beginTransaction().add(R.id.main_frame, resultFragment).commit();
+                        }
+                        if(resultFragment != null) getSupportFragmentManager().beginTransaction().show(resultFragment).commit();
+                        if(homeFragment != null) getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
+                        if(setFragment != null) getSupportFragmentManager().beginTransaction().hide(setFragment).commit();
+                        if(planFragment != null) getSupportFragmentManager().beginTransaction().hide(planFragment).commit();
+                        if(chatFragment != null) getSupportFragmentManager().beginTransaction().hide(chatFragment).commit();
+
+                      /*  ft.replace(R.id.main_frame, resultFragment);
+                        ft.commit();*/
                         return true;
 
                     case R.id.nav_chat:
@@ -139,8 +165,20 @@ public class MainActivity extends AppCompatActivity {
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
                                 new ColorDrawable(Color.parseColor("#87cefa")));
-                        ft.replace(R.id.main_frame, chatFragment);
-                        ft.commit();
+
+                        if(chatFragment == null) {
+                            chatFragment = new ChatFragment();
+                            getSupportFragmentManager().beginTransaction().add(R.id.main_frame, chatFragment).commit();
+                        }
+                        if(chatFragment != null) getSupportFragmentManager().beginTransaction().show(chatFragment).commit();
+                        if(homeFragment != null) getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
+                        if(setFragment != null) getSupportFragmentManager().beginTransaction().hide(setFragment).commit();
+                        if(planFragment != null) getSupportFragmentManager().beginTransaction().hide(planFragment).commit();
+                        if(resultFragment != null) getSupportFragmentManager().beginTransaction().hide(resultFragment).commit();
+
+
+/*                        ft.replace(R.id.main_frame, chatFragment);
+                        ft.commit();*/
                         return true;
 
 
@@ -150,8 +188,18 @@ public class MainActivity extends AppCompatActivity {
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
                                 new ColorDrawable(Color.parseColor("#87cefa")));
-                        ft.replace(R.id.main_frame, setFragment);
-                        ft.commit();
+
+                        if(setFragment == null) {
+                            setFragment = new SetFragment();
+                            getSupportFragmentManager().beginTransaction().add(R.id.main_frame, setFragment).commit();
+                        }
+                        if(setFragment != null) getSupportFragmentManager().beginTransaction().show(setFragment).commit();
+                        if(homeFragment != null) getSupportFragmentManager().beginTransaction().hide(homeFragment).commit();
+                        if(chatFragment != null) getSupportFragmentManager().beginTransaction().hide(chatFragment).commit();
+                        if(planFragment != null) getSupportFragmentManager().beginTransaction().hide(planFragment).commit();
+                        if(resultFragment != null) getSupportFragmentManager().beginTransaction().hide(resultFragment).commit();
+/*                        ft.replace(R.id.main_frame, setFragment);
+                        ft.commit();*/
                         return true;
 
                     default:
