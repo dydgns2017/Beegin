@@ -11,8 +11,7 @@
         android:title="@string/nav_plan" />
 
 
-    <item
-        android:id="@+id/nav_chat"
+    <item        android:id="@+id/nav_chat"
         android:icon="@drawable/outline_textsms_black_18dp"
         android:title="Chatting" />
 

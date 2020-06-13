@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_textchart"
+        android:icon="@drawable/baseline_home_black_18dp"
+        android:title="텍스트로보기" />
+    <item
+        android:id="@+id/nav_criclegraph"
+        android:icon="@drawable/baseline_watch_later_black_18dp"
+        android:title="원형그래프로보기" />
+
+
+    <item
+        android:id="@+id/nav_fungraph"
+        android:icon="@drawable/outline_textsms_black_18dp"
+        android:title="재밌게보기" />
+
+</menu>

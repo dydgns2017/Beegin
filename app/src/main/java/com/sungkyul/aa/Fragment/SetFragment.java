@@ -21,6 +21,7 @@ import com.sungkyul.aa.setFragment.NoticeActivity;
 import com.sungkyul.aa.setFragment.QuestionActivity;
 import com.sungkyul.aa.setFragment.SettingActivity;
 
+import com.sungkyul.aa.loginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,7 +105,7 @@ public class SetFragment extends Fragment {
             public void onClick(View v) {
                 Log.i(this.getClass().getName(), "LinerLogout 클릭");
 
-                Intent intent = new Intent(getActivity().getApplication(), LogoutActivity.class);
+                Intent intent = new Intent(getActivity().getApplication(), loginActivity.class);
 
                 startActivity(intent);
             }
