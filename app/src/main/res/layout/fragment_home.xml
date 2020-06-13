@@ -65,6 +65,12 @@
                 ></Button>
 
 
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/no"/>
+
+
 
         </LinearLayout>
 
@@ -101,14 +107,31 @@
             android:numColumns="3" >
         </GridView>
 
-        <Button
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/twotone_add_circle_outline_black_18dp"
-            android:id="@+id/btnAddActivity"
-            android:layout_gravity="right"
-            android:layout_marginBottom="20dp"
+
+        <com.google.android.material.button.MaterialButton
             android:layout_marginRight="30dp"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAddActivity"
+
+            app:strokeColor="#50BCDF"
+            app:strokeWidth="2dp"
+
+            app:backgroundTint="@color/colorBlue"
+            app:cornerRadius="10dp"
+
+            app:rippleColor="#4AA8D8"
+
+            app:icon="@drawable/twotone_add_circle_outline_black_18dp"
+
+            app:iconSize="20dp"
+            app:iconTint="#50BCDF"
+            app:iconPadding="5dp"
+            android:text="추가"
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+
             />
 
 

@@ -10,9 +10,18 @@
 
     <color name="colorPurple">#7E57C2</color>
     <color name="colorBlue">#87cefa</color>
-
-
-
     <color name="colorWhite">#ffffff</color>
     <color name="colorWhiteTransparent">#80ffffff</color>
+
+
+
+
+    <!-- dddddddddddddddddddddddddddddddddddddddddddddd -->
+
+    <color name="background">#2e2a38</color>
+    <color name="green">#38c96d</color>
+    <color name="red">#eb4b4b</color>
+    <color name="white">#fff</color>
+    <color name="background_dialog">#f7f7f7</color>
+    <color name="text">#a3a3a3</color>
 </resources>
