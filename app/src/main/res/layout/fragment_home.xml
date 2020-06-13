@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnAddActivity"
 
-            app:strokeColor="#50BCDF"
+            app:strokeColor="@color/colorBlue"
             app:strokeWidth="2dp"
 
             app:backgroundTint="@color/colorBlue"

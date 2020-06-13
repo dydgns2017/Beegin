@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sungkyul.aa.AddWorkActivity;
+import com.sungkyul.aa.BackPressHandler;
 import com.sungkyul.aa.R;
 
 import org.w3c.dom.Text;
@@ -37,6 +38,8 @@ import java.util.Date;
  */
 public class HomeFragment extends Fragment {
 
+
+
     Chronometer chrono;
     View view;
     Button btnStop;
@@ -46,7 +49,6 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -119,7 +121,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), AddWorkActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -211,6 +212,8 @@ public class HomeFragment extends Fragment {
                             chrono.setTextColor(Color.RED);
                         }
                     });
+
+
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
                         @Override
                         public void onClick(DialogInterface dialog, int id)
