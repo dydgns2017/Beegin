@@ -24,32 +24,49 @@
             >
 
             <TextView
+                android:id="@+id/mainTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="여행 중...."
-                android:textSize="30dp"
+                android:text="하는게 없습니다..."
+                android:textSize="20dp"
                 android:textStyle="bold"
                 />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="새로운 일정을 시작하셨습니다."
-            android:textSize="15dp"
-            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00 : 01"
-            android:layout_gravity="right"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="40dp"
-            android:textSize="15dp"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mainSubTitle"
+                android:text="..."
+                android:textSize="10dp"
+                />
 
 
-    </LinearLayout>
+
+            <Chronometer
+                android:id="@+id/chronometer1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:format="진행된 시간 : %s "
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/baseline_stop_black_36"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="140dp"
+                android:gravity="left"
+                ></Button>
+
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -58,10 +75,13 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/cycle" />
+                android:id="@+id/mainImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                app:srcCompat="@drawable/no"
+                />
         </LinearLayout>
     </LinearLayout>
 
