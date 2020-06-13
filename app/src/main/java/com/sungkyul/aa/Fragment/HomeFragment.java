@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sungkyul.aa.AddWorkActivity;
 import com.sungkyul.aa.BackPressHandler;
 import com.sungkyul.aa.R;
@@ -115,7 +116,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Button btnAddActivity = (Button) view.findViewById(R.id.btnAddActivity);
+        FloatingActionButton btnAddActivity = (FloatingActionButton) view.findViewById(R.id.btnAddActivity);
         btnAddActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

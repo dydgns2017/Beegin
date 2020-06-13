@@ -17,6 +17,7 @@
         android:background="@drawable/border">
         <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_height="150dp"
             android:orientation="vertical"
             android:layout_weight="1"
@@ -28,7 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="하는게 없습니다..."
-                android:textSize="20dp"
+                android:textColor="#000"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 />
 
@@ -37,8 +39,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/mainSubTitle"
+                android:textColor="#000"
                 android:text="..."
-                android:textSize="10dp"
+                android:textSize="15dp"
                 />
 
 
@@ -48,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:format="진행된 시간 : %s "
+                android:textColor="#000"
                 android:gravity="center"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
@@ -56,19 +60,16 @@
 
             <Button
                 android:id="@+id/btnStop"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/baseline_stop_black_36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="취소"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="140dp"
-                android:gravity="left"
+
                 ></Button>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/no"/>
+
 
 
 
@@ -108,7 +109,21 @@
         </GridView>
 
 
-        <com.google.android.material.button.MaterialButton
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|right"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:fabSize="normal"
+            app:backgroundTint="@color/colorBlue"
+            app:elevation="6dp"
+            android:id="@+id/btnAddActivity"
+            />
+
+       <!-- <com.google.android.material.button.MaterialButton
             android:layout_marginRight="30dp"
             android:layout_gravity="right"
             android:layout_width="wrap_content"
@@ -132,7 +147,7 @@
             android:textStyle="bold"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
 
-            />
+            />-->
 
 
     </LinearLayout>
