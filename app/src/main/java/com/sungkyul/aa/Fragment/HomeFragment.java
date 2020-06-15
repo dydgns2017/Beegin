@@ -1,10 +1,13 @@
 package com.sungkyul.aa.Fragment;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
@@ -31,6 +34,7 @@ import com.sungkyul.aa.R;
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -39,6 +43,32 @@ import java.util.Date;
  */
 public class HomeFragment extends Fragment {
 
+
+    GridView gridView;
+    //이미지 배열 선언
+    ArrayList<Bitmap> picArr = new ArrayList<Bitmap>();
+   //텍스트 배열 선언
+    ArrayList<String> textArr = new ArrayList<String>();
+
+    Integer[] posterID = { R.drawable.mov01, R.drawable.mov02,
+            R.drawable.mov03, R.drawable.mov04, R.drawable.mov05,
+            R.drawable.mov06, R.drawable.mov07, R.drawable.mov08,
+            R.drawable.mov09, R.drawable.mov10, R.drawable.mov01,
+            R.drawable.mov02, R.drawable.mov03, R.drawable.mov04,
+            R.drawable.mov05, R.drawable.mov06, R.drawable.mov07,
+            R.drawable.mov08, R.drawable.mov09, R.drawable.mov10,
+            R.drawable.mov01, R.drawable.mov02, R.drawable.mov03,
+            R.drawable.mov04, R.drawable.mov05, R.drawable.mov06,
+            R.drawable.mov07, R.drawable.mov08, R.drawable.mov09,
+            R.drawable.mov10 };
+
+    String[] posterText = { "써니 보자", "완득이 보자",
+            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
+            "헬보이 보자", "박원용 보자","써니 보자", "완득이 보자",
+            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
+            "헬보이 보자", "박원용 보자","써니 보자", "완득이 보자",
+            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
+            "헬보이 보자", "박원용 보자"};
 
 
     Chronometer chrono;
@@ -125,128 +155,98 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        final GridView gv = (GridView) view.findViewById(R.id.gridView1);
-        MyGridAdapter gAdapter = new MyGridAdapter(getActivity());
-        gv.setAdapter(gAdapter);
+
+        Bitmap bm1 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+        Bitmap bm2 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+        Bitmap bm3 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+        Bitmap bm4 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+        Bitmap bm5 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+
+        Bitmap bm6 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+
+        Bitmap bm7 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+
+        Bitmap bm8 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+
+        Bitmap bm9 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+
+        Bitmap bm10 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
+
+        for(int i=0; i<10; i++){
+            picArr.add(BitmapFactory.decodeResource(getResources(), posterID[i]));
+        }
+
+
+        for (int i = 0 ; i < 10 ; i++) {
+            textArr.add(posterText[i]);
+        }
+
+
+        gridView = (GridView) view.findViewById(R.id.gridView1);
+        gridView.setAdapter(new gridAdapter());
+
+
         return view;
     }
 
+    public class gridAdapter extends BaseAdapter {
 
-    public class MyGridAdapter extends BaseAdapter {
-        Context context;
+        LayoutInflater inflater;
 
-        public MyGridAdapter(Context c){
-            context = c;
+
+        public gridAdapter() {
+
+            inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         }
+
 
         @Override
+
         public int getCount() {
-            return posterID.length;
+            return picArr.size();    //그리드뷰에 출력할 목록 수
         }
+
 
         @Override
         public Object getItem(int position) {
-            return null;
+            return picArr.get(position);    //아이템을 호출할 때 사용하는 메소드
         }
 
+
         @Override
+
         public long getItemId(int position) {
-            return 0;
+            return position;    //아이템의 아이디를 구할 때 사용하는 메소드
         }
 
 
-        Integer[] posterID = { R.drawable.mov01, R.drawable.mov02,
-                R.drawable.mov03, R.drawable.mov04, R.drawable.mov05,
-                R.drawable.mov06, R.drawable.mov07, R.drawable.mov08,
-                R.drawable.mov09, R.drawable.mov10, R.drawable.mov01,
-                R.drawable.mov02, R.drawable.mov03, R.drawable.mov04,
-                R.drawable.mov05, R.drawable.mov06, R.drawable.mov07,
-                R.drawable.mov08, R.drawable.mov09, R.drawable.mov10,
-                R.drawable.mov01, R.drawable.mov02, R.drawable.mov03,
-                R.drawable.mov04, R.drawable.mov05, R.drawable.mov06,
-                R.drawable.mov07, R.drawable.mov08, R.drawable.mov09,
-                R.drawable.mov10 };
-
-        String[] posterText = { "써니 보자", "완득이 보자",
-                "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-                "헬보이 보자", "박원용 보자","써니 보자", "완득이 보자",
-                "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-                "헬보이 보자", "박원용 보자","써니 보자", "완득이 보자",
-                "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-                "헬보이 보자", "박원용 보자"};
-
         @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, ViewGroup parent) {
 
-            ImageView imageView = new ImageView(context);
-            imageView.setLayoutParams(new GridView.LayoutParams(200, 300));
-            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            if (convertView == null) {
+                convertView = inflater.inflate(R.layout.gridview_list, parent, false);
 
-            imageView.setPadding(5,5,5,5);
-
-            imageView.setImageResource(posterID[position]);
+            }
 
 
-            final int pos = position;
+            ImageView imageView = (ImageView) convertView.findViewById(R.id.img_grid);
+
+            TextView textView = (TextView) convertView.findViewById(R.id.txt_grid);
+
+
+            imageView.setImageBitmap(picArr.get(position));
+
+            textView.setText(textArr.get(position));
 
 
 
-            imageView.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setTitle("활동 시작").setMessage("활동을 시작하시겠습니까??");
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-                        @Override
-                        public void onClick(DialogInterface dialog, int id)
-                        {
-                            Toast.makeText(getActivity(), "활동이 시작되었습니다.", Toast.LENGTH_LONG).show();
-                            chrono.setVisibility(View.VISIBLE);
-                            btnStop.setVisibility(View.VISIBLE);
-                            imgMain.setImageResource(posterID[position]);
-                            txtTitle.setText(posterText[position]);
-                            txtSubTitle.setText("새로운 일정을 시작하셨습니다!!@@");
+            return convertView;
 
-                            chrono.setBase(SystemClock.elapsedRealtime());
-                            chrono.start();
-                            chrono.setTextColor(Color.RED);
-                        }
-                    });
-
-
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-                        @Override
-                        public void onClick(DialogInterface dialog, int id)
-                        {
-                            Toast.makeText(getActivity().getApplicationContext(), "Cancel Click", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-                }
-            });
-
-            chrono.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-/*                    // 현재시간을 msec 으로 구한다.
-                    long now = System.currentTimeMillis();
-                    // 현재시간을 date 변수에 저장한다.
-                    Date date = new Date(now);
-                    // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
-                    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                    // nowDate 변수에 값을 저장한다.
-                    String formatDate = sdfNow.format(date);
-                    txtTime = (TextView) view.findViewById(R.id.txt);
-                    dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당  */
-                    chrono.setBase(SystemClock.elapsedRealtime());
-                    chrono.start();
-                    chrono.setTextColor(Color.RED);
-
-                }
-            });
-            return imageView;
         }
     }
+
+
+
 }
