@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -25,24 +26,25 @@ public class loginActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         btnLogin = (Button)findViewById(R.id.btnlogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                EditText id = (EditText)findViewById(R.id.id);
-                EditText pass = (EditText)findViewById(R.id.password);
-
-                    if("test".equals(id.getText().toString().trim()) && "test".equals(pass.getText().toString().trim())) {
-
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(getApplicationContext(), "아이디 비밀번호가 틀렸어? (id,pwd : test)",Toast.LENGTH_LONG).show();
-                    }
-
-
-            }
-        });
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                EditText id = (EditText)findViewById(R.id.id);
+//                EditText pass = (EditText)findViewById(R.id.password);
+//
+//                    if("test".equals(id.getText().toString().trim()) && "test".equals(pass.getText().toString().trim())) {
+//
+//                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                        startActivity(intent);
+//                    }else{
+//                        Toast.makeText(getApplicationContext(), "아이디 비밀번호가 틀렸어? (id,pwd : test)",Toast.LENGTH_LONG).show();
+//                    }
+//
+//
+//            }
+//        });
 
 
 

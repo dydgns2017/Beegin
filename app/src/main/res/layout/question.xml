@@ -3,12 +3,69 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="#A7FFEB"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:text="question"/>
+        android:layout_height="wrap_content"
+        android:text="질문하기"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:layout_margin="20dp"
 
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <TextView
+            android:textSize="20dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="제목"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <TextView
+            android:textSize="20dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="내용"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="12"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="보내기"
+        android:layout_gravity="right"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
 
 </LinearLayout>
