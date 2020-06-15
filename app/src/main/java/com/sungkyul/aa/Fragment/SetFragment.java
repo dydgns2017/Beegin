@@ -29,6 +29,8 @@ import com.sungkyul.aa.loginActivity;
 public class SetFragment extends Fragment {
 
     LinearLayout LinerNotice, LinerQuestion, LinerHelp, LinerSetting, LinerLogout;
+    LinearLayout LinerOutputData, LinerInputData;
+
     public SetFragment() {
         // Required empty public constructor
     }
@@ -111,6 +113,27 @@ public class SetFragment extends Fragment {
             }
         });
 
+        //데이터 내려받기
+        LinerInputData = rootView.findViewById(R.id.LinerInputData);
+
+        LinerInputData.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "데이터를 내려받았습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        //데이터 백업하기(업로드)
+
+        LinerOutputData = rootView.findViewById(R.id.LinerOutdata);
+
+        LinerOutputData.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "데이터를 백업하였습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return rootView;
 
