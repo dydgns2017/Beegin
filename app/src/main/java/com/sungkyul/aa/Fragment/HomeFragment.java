@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -30,6 +31,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sungkyul.aa.AddWorkActivity;
 import com.sungkyul.aa.BackPressHandler;
 import com.sungkyul.aa.R;
+import com.sungkyul.aa.myDBHelper;
 
 import org.w3c.dom.Text;
 
@@ -45,30 +47,21 @@ public class HomeFragment extends Fragment {
 
 
     GridView gridView;
+    int index;
     //이미지 배열 선언
     ArrayList<Bitmap> picArr = new ArrayList<Bitmap>();
     //텍스트 배열 선언
     ArrayList<String> textArr = new ArrayList<String>();
+    public static myDBHelper myDBHelper;
+    public static SQLiteDatabase db;
+    String startTime, endTime;
+    Integer[] posterID = { R.drawable.icon01, R.drawable.icon02, R.drawable.icon03, R.drawable.icon04, R.drawable.icon05, R.drawable.icon06,
+            R.drawable.icon07, R.drawable.icon08, R.drawable.icon09, R.drawable.icon10, R.drawable.icon11, R.drawable.icon12  };
 
-    Integer[] posterID = { R.drawable.mov01, R.drawable.mov02,
-            R.drawable.mov03, R.drawable.mov04, R.drawable.mov05,
-            R.drawable.mov06, R.drawable.mov07, R.drawable.mov08,
-            R.drawable.mov09, R.drawable.mov10, R.drawable.mov01,
-            R.drawable.mov02, R.drawable.mov03, R.drawable.mov04,
-            R.drawable.mov05, R.drawable.mov06, R.drawable.mov07,
-            R.drawable.mov08, R.drawable.mov09, R.drawable.mov10,
-            R.drawable.mov01, R.drawable.mov02, R.drawable.mov03,
-            R.drawable.mov04, R.drawable.mov05, R.drawable.mov06,
-            R.drawable.mov07, R.drawable.mov08, R.drawable.mov09,
-            R.drawable.mov10 };
-
-    String[] posterText = { "써니 보자", "완득이 보자",
-            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-            "헬보이 보자", "박원용 보자","써니 보자", "완득이 보자",
-            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-            "헬보이 보자", "박원용 보자","써니 보자", "완득이 보자",
-            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-            "헬보이 보자", "박원용 보자"};
+    String[] posterText = { "수면", "이동",
+            "식사", "운동","일", "쇼핑","여가 활동", "집안일",
+            "영화", "걷기","공부", "인터넷",
+          };
 
 
     Chronometer chrono;
@@ -102,16 +95,22 @@ public class HomeFragment extends Fragment {
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*                // 현재시간을 msec 으로 구한다.
+
+                // 현재시간을 msec 으로 구한다.
                 long now = System.currentTimeMillis();
                 // 현재시간을 date 변수에 저장한다.
                 Date date = new Date(now);
                 // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
                 SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                 // nowDate 변수에 값을 저장한다.
-                String formatDate = sdfNow.format(date);
-                dateEnd = (TextView) findViewById(R.id.dateEnd);
-                dateEnd.setText(formatDate);    // TextView 에 현재 시간 문자열 할당  */
+                String endTime = sdfNow.format(date);
+
+                myDBHelper = new myDBHelper(getActivity());
+                db = myDBHelper.getWritableDatabase();
+
+                myDBHelper.insert(db , posterText[index], startTime, endTime);
+
+
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("활동 종료").setMessage("활동을 종료하시겠습니까??");
@@ -156,12 +155,12 @@ public class HomeFragment extends Fragment {
         });
 
 
-        for(int i=0; i<10; i++){
+        for(int i=0; i<12; i++){
             picArr.add(BitmapFactory.decodeResource(getResources(), posterID[i]));
         }
 
 
-        for (int i = 0 ; i < 10 ; i++) {
+        for (int i = 0 ; i < 12 ; i++) {
             textArr.add(posterText[i]);
         }
 
@@ -223,8 +222,23 @@ public class HomeFragment extends Fragment {
                             chrono.setVisibility(View.VISIBLE);
                             btnStop.setVisibility(View.VISIBLE);
                             imgMain.setImageResource(posterID[position]);
-                            txtTitle.setText(posterText[position]);
+                            txtTitle.setText(posterText[position] + "중 입니다.");
+                            // DB값 저장하기위한 용도
+                            index = position;
                             txtSubTitle.setText("새로운 일정을 시작하셨습니다.");
+
+                            // 현재시간을 msec 으로 구한다.
+                            long now = System.currentTimeMillis();
+                            // 현재시간을 date 변수에 저장한다.
+                            Date date = new Date(now);
+                            // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
+                            SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                            // nowDate 변수에 값을 저장한다.
+                            startTime = sdfNow.format(date);
+
+                            chrono.setBase(SystemClock.elapsedRealtime());
+                            chrono.start();
+                            chrono.setTextColor(Color.RED);
 
                             chrono.setBase(SystemClock.elapsedRealtime());
                             chrono.start();
@@ -248,19 +262,7 @@ public class HomeFragment extends Fragment {
 
             chrono.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-/*                    // 현재시간을 msec 으로 구한다.
-                    long now = System.currentTimeMillis();
-                    // 현재시간을 date 변수에 저장한다.
-                    Date date = new Date(now);
-                    // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
-                    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                    // nowDate 변수에 값을 저장한다.
-                    String formatDate = sdfNow.format(date);
-                    txtTime = (TextView) view.findViewById(R.id.txt);
-                    dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당  */
-                    chrono.setBase(SystemClock.elapsedRealtime());
-                    chrono.start();
-                    chrono.setTextColor(Color.RED);
+
 
                 }
             });

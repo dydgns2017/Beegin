@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         myDBHelper = new myDBHelper(this);
                db = myDBHelper.getWritableDatabase();
 //        db.execSQL("INSERT INTO time_db VALUES (1, '운동', '2020-06-16 15:00:00'," +
-//                " '2020-06-16 15:30:00', '30' )");
+//                " '2020-06-16 15:30:00', '30' );");
 //        db.execSQL("INSERT INTO time_db VALUES (2, '운동', '2020-06-16 16:00:00'," +
 //                " '2020-06-16 16:50:00', '50' )");
 //        db.execSQL("INSERT INTO time_db VALUES (3, '독서', '2020-06-16 17:00:00'," +

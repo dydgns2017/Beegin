@@ -3,6 +3,7 @@ package com.sungkyul.aa;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class myDBHelper extends SQLiteOpenHelper {
 
@@ -19,6 +20,12 @@ public class myDBHelper extends SQLiteOpenHelper {
                 "timestart TEXT, " +
                 "timeend TEXT, " +
                 "timedata TEXT );");
+    }
+
+    public void insert(SQLiteDatabase db, String activityName, String timeStart, String timeEnd){
+        Log.i(this.getClass().getName(),activityName + timeEnd +timeStart);
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend) VALUES ('" + activityName + "', '" + timeStart + "', '" + timeEnd + "');");
+
     }
 
     @Override
