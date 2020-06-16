@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 public class SignUp extends Activity {
-
+// 회원가입을 진행하는 클래스 입니다.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 
 public class AddWorkActivity extends Activity {
 
+    // 활동을 추가할때 사용하는 클래스 입니다.
+
 
     Button btnadd;
     EditText edtName;

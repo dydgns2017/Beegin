@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.widget.Toast;
 
 
+// 뒤로가기 버튼을 눌렀을때 토스트메세지를 띄워서 확인하게 하는 클래스입니다.
+// 현재는 사용하지 않고 MainActivity에 코드를 박아놓았지만 차후에 수정예정입니다.
+
 public class BackPressHandler {
 
     // 마지막으로 뒤로가기 버튼을 눌렀던 시간 저장
