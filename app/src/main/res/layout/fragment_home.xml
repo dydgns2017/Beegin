@@ -28,7 +28,7 @@
                 android:id="@+id/mainTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="하는게 없습니다..."
+                android:text="으잉?"
                 android:textColor="#000"
                 android:textSize="25dp"
                 android:textStyle="bold"
@@ -40,7 +40,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/mainSubTitle"
                 android:textColor="#000"
-                android:text="..."
                 android:textSize="15dp"
                 />
 
@@ -67,11 +66,6 @@
                 android:layout_marginLeft="140dp"
 
                 ></Button>
-
-
-
-
-
 
         </LinearLayout>
 
@@ -123,31 +117,31 @@
             android:id="@+id/btnAddActivity"
             />
 
-       <!-- <com.google.android.material.button.MaterialButton
-            android:layout_marginRight="30dp"
-            android:layout_gravity="right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAddActivity"
+        <!-- <com.google.android.material.button.MaterialButton
+             android:layout_marginRight="30dp"
+             android:layout_gravity="right"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/btnAddActivity"
 
-            app:strokeColor="@color/colorBlue"
-            app:strokeWidth="2dp"
+             app:strokeColor="@color/colorBlue"
+             app:strokeWidth="2dp"
 
-            app:backgroundTint="@color/colorBlue"
-            app:cornerRadius="10dp"
+             app:backgroundTint="@color/colorBlue"
+             app:cornerRadius="10dp"
 
-            app:rippleColor="#4AA8D8"
+             app:rippleColor="#4AA8D8"
 
-            app:icon="@drawable/twotone_add_circle_outline_black_18dp"
+             app:icon="@drawable/twotone_add_circle_outline_black_18dp"
 
-            app:iconSize="20dp"
-            app:iconTint="#50BCDF"
-            app:iconPadding="5dp"
-            android:text="추가"
-            android:textStyle="bold"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+             app:iconSize="20dp"
+             app:iconTint="#50BCDF"
+             app:iconPadding="5dp"
+             android:text="추가"
+             android:textStyle="bold"
+             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
 
-            />-->
+             />-->
 
 
     </LinearLayout>

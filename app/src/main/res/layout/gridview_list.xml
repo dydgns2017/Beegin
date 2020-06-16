@@ -10,8 +10,8 @@
     <ImageView
 
         android:id="@+id/img_grid"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/no"
         android:layout_gravity="center" />
 
@@ -19,11 +19,12 @@
 
     <TextView
         android:id="@+id/txt_grid"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:textStyle="bold"
+        android:textSize="12dp"
         android:textColor="#000"
         android:text="TextView" />
 
