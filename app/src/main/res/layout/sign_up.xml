@@ -5,122 +5,129 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
     tools:context=".MainActivity">
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="225dp"
-        android:layout_height="159dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/login_back" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="WELCOME to the Beegin"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_marginTop="-10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SignUp to start your use Beegin"/>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="20dp"
         >
-
-
-        <com.google.android.material.textfield.TextInputLayout
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="match_parent"
+            android:stretchColumns="1">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="225dp"
+                android:layout_height="159dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/login_back" />
 
-            <EditText
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="WELCOME to the Beegin"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginTop="-10dp"/>
 
-                android:id="@+id/edtFullName"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SignUp to start your use Beegin"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=" First Name"
-                android:inputType="text">
-
-            </EditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            >
-
-            <EditText
-
-                android:id="@+id/edtUserName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint=" Last Name"
-                android:inputType="text">
-
-            </EditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <EditText
-
-                android:id="@+id/edtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint=" Email"
-                android:inputType="text">
-
-            </EditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            >
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint=" Passward"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 >
 
-            </EditText>
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            >
-            <EditText
-                android:id="@+id/password_again"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint=" Passward  again"
-                />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <EditText
+
+                        android:id="@+id/edtFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint=" First Name"
+                        android:inputType="text">
+
+                    </EditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="20"
+                    >
+
+                    <EditText
+
+                        android:id="@+id/edtUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint=" Last Name"
+                        android:inputType="text">
+
+                    </EditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <EditText
+
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint=" Email"
+                        android:inputType="text">
+
+                    </EditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    >
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:hint=" Passward"
+                        >
+
+                    </EditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    >
+                    <EditText
+                        android:id="@+id/password_again"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:hint=" Passward  again"
+                        />
 
 
-        </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -128,22 +135,23 @@
 
 
 
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"
-            android:background="#000000"
-            android:textColor="#fff"
-            android:layout_gravity="center_horizontal"
-            android:textSize="15dp"
-            android:ems="10"
-            android:text="Go" />
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"
+                    android:background="#000000"
+                    android:textColor="#fff"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="15dp"
+                    android:ems="10"
+                    android:text="Go" />
 
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-
+        </TableLayout>
+    </ScrollView>
 </LinearLayout>
