@@ -24,7 +24,7 @@ import static android.webkit.ConsoleMessage.MessageLevel.LOG;
 
 public class SignUp extends Activity {
     EditText edtFullName, edtUserName, edtEmail, password, password_again;
-
+    // 회원가입을 진행하는 클래스 입니다.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

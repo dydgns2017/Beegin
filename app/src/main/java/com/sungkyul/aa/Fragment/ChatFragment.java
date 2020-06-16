@@ -15,6 +15,8 @@ import com.sungkyul.aa.R;
 /**
  * A simple {@link Fragment} subclass.
  */
+
+// 게시판으로 사용될 클래스입니다.
 public class ChatFragment extends Fragment {
 
 

@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import com.sungkyul.aa.MainActivity;
 
 public class SplashActivity extends Activity {
-
+// 처음등장하는 이미지 시간지정 및 엑티비티 넘기는 클래스 입니다.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

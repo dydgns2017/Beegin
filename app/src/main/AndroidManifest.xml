@@ -11,8 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".timerService"
+            android:enabled="true"
+            android:exported="true"></service>
 
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/SplashThme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,20 +25,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".loginActivity" />
+        <activity android:name=".SignUp" />
+        <activity
+            android:name=".setFragment.NoticeActivity"
+            android:label="Notice 액티비티" />
+        <activity
+            android:name=".setFragment.HelpActivity"
+            android:label="Help 액티비티" />
+        <activity
+            android:name=".setFragment.LogoutActivity"
+            android:label="Logout 액티비티" />
+        <activity
+            android:name=".setFragment.QuestionActivity"
+            android:label="Question 액티비티" />
+        <activity
+            android:name=".setFragment.SettingActivity"
+            android:label="Setting 액티비티" />
+        <activity android:name=".AddWorkActivity" />
+    </application>
 
-         <activity android:name=".MainActivity">
-    </activity>
-
-        <activity android:name=".loginActivity"/>
-        <activity android:name=".SignUp"/>
-        <activity android:label="Notice 액티비티" android:name=".setFragment.NoticeActivity"/>
-        <activity android:label="Help 액티비티" android:name=".setFragment.HelpActivity"/>
-        <activity android:label="Logout 액티비티" android:name=".setFragment.LogoutActivity"/>
-        <activity android:label="Question 액티비티" android:name=".setFragment.QuestionActivity"/>
-        <activity android:label="Setting 액티비티" android:name=".setFragment.SettingActivity"/>
-        <activity android:name=".AddWorkActivity"/>
-
-</application>
-
-
-    </manifest>
+</manifest>

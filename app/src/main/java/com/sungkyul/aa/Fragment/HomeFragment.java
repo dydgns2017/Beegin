@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -30,6 +31,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sungkyul.aa.AddWorkActivity;
 import com.sungkyul.aa.BackPressHandler;
 import com.sungkyul.aa.R;
+import com.sungkyul.aa.myDBHelper;
+import com.sungkyul.aa.timeProcess;
 
 import org.w3c.dom.Text;
 
@@ -45,30 +48,23 @@ public class HomeFragment extends Fragment {
 
 
     GridView gridView;
+    int index;
     //이미지 배열 선언
     ArrayList<Bitmap> picArr = new ArrayList<Bitmap>();
-   //텍스트 배열 선언
+    //텍스트 배열 선언
     ArrayList<String> textArr = new ArrayList<String>();
+    public static myDBHelper myDBHelper;
+    public static SQLiteDatabase db;
+    public static timeProcess timePro;
 
-    Integer[] posterID = { R.drawable.mov01, R.drawable.mov02,
-            R.drawable.mov03, R.drawable.mov04, R.drawable.mov05,
-            R.drawable.mov06, R.drawable.mov07, R.drawable.mov08,
-            R.drawable.mov09, R.drawable.mov10, R.drawable.mov01,
-            R.drawable.mov02, R.drawable.mov03, R.drawable.mov04,
-            R.drawable.mov05, R.drawable.mov06, R.drawable.mov07,
-            R.drawable.mov08, R.drawable.mov09, R.drawable.mov10,
-            R.drawable.mov01, R.drawable.mov02, R.drawable.mov03,
-            R.drawable.mov04, R.drawable.mov05, R.drawable.mov06,
-            R.drawable.mov07, R.drawable.mov08, R.drawable.mov09,
-            R.drawable.mov10 };
+    String startTime, endTime, timeGap;
+    Integer[] posterID = { R.drawable.icon01, R.drawable.icon02, R.drawable.icon03, R.drawable.icon04, R.drawable.icon05, R.drawable.icon06,
+            R.drawable.icon07, R.drawable.icon08, R.drawable.icon09, R.drawable.icon10, R.drawable.icon11, R.drawable.icon12  };
 
-    String[] posterText = { "써니 보자", "완득이 보자",
-            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-            "헬보이 보자", "박원용 보자","써니 보자", "완득이 보자",
-            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-            "헬보이 보자", "박원용 보자","써니 보자", "완득이 보자",
-            "괴물 보자", "라디오스타 보자","비열한거리 보자", "왕의남자 보자","아일랜드 보자", "웰컴투 동막골 보자",
-            "헬보이 보자", "박원용 보자"};
+    String[] posterText = { "수면", "이동",
+            "식사", "운동","일", "쇼핑","여가 활동", "집안일",
+            "영화", "걷기","공부", "인터넷",
+          };
 
 
     Chronometer chrono;
@@ -102,16 +98,28 @@ public class HomeFragment extends Fragment {
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*                // 현재시간을 msec 으로 구한다.
+
+                // 현재시간을 msec 으로 구한다.
                 long now = System.currentTimeMillis();
                 // 현재시간을 date 변수에 저장한다.
                 Date date = new Date(now);
                 // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
                 SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                 // nowDate 변수에 값을 저장한다.
-                String formatDate = sdfNow.format(date);
-                dateEnd = (TextView) findViewById(R.id.dateEnd);
-                dateEnd.setText(formatDate);    // TextView 에 현재 시간 문자열 할당  */
+                String endTime = sdfNow.format(date);
+
+                myDBHelper = new myDBHelper(getActivity());
+                db = myDBHelper.getWritableDatabase();
+                try {
+                    // 호출 대상 매서드
+                    timeGap = timeProcess.timePro(startTime, endTime, null);
+                } catch (Exception e) {
+                    // 예외처리
+                }
+
+                myDBHelper.insert(db , posterText[index], startTime, endTime, timeGap);
+
+
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("활동 종료").setMessage("활동을 종료하시겠습니까??");
@@ -125,7 +133,7 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity(), "활동이 종료되었습니다.", Toast.LENGTH_LONG).show();
                         imgMain.setImageResource(R.drawable.no);
                         txtTitle.setText("하는게 없습니다...");
-                        txtSubTitle.setText("에에 !! 여기까지 테스트를 해보셨다구요??");
+                        txtSubTitle.setText(" ");
 
                         chrono.setBase(SystemClock.elapsedRealtime());
                         chrono.stop();
@@ -156,28 +164,12 @@ public class HomeFragment extends Fragment {
         });
 
 
-        Bitmap bm1 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-        Bitmap bm2 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-        Bitmap bm3 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-        Bitmap bm4 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-        Bitmap bm5 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-
-        Bitmap bm6 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-
-        Bitmap bm7 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-
-        Bitmap bm8 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-
-        Bitmap bm9 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-
-        Bitmap bm10 = BitmapFactory.decodeResource(getResources(), R.drawable.mov01);
-
-        for(int i=0; i<10; i++){
+        for(int i=0; i<12; i++){
             picArr.add(BitmapFactory.decodeResource(getResources(), posterID[i]));
         }
 
 
-        for (int i = 0 ; i < 10 ; i++) {
+        for (int i = 0 ; i < 12 ; i++) {
             textArr.add(posterText[i]);
         }
 
@@ -195,49 +187,95 @@ public class HomeFragment extends Fragment {
 
 
         public gridAdapter() {
-
             inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         }
 
-
         @Override
-
         public int getCount() {
             return picArr.size();    //그리드뷰에 출력할 목록 수
         }
-
 
         @Override
         public Object getItem(int position) {
             return picArr.get(position);    //아이템을 호출할 때 사용하는 메소드
         }
 
-
         @Override
-
         public long getItemId(int position) {
             return position;    //아이템의 아이디를 구할 때 사용하는 메소드
         }
 
-
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
+        public View getView(final int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.gridview_list, parent, false);
 
             }
-
-
             ImageView imageView = (ImageView) convertView.findViewById(R.id.img_grid);
-
             TextView textView = (TextView) convertView.findViewById(R.id.txt_grid);
 
-
             imageView.setImageBitmap(picArr.get(position));
-
             textView.setText(textArr.get(position));
+
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("활동 시작").setMessage("활동을 시작하시겠습니까??");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            Toast.makeText(getActivity(), "활동이 시작되었습니다.", Toast.LENGTH_LONG).show();
+                            chrono.setVisibility(View.VISIBLE);
+                            btnStop.setVisibility(View.VISIBLE);
+                            imgMain.setImageResource(posterID[position]);
+                            txtTitle.setText(posterText[position] + "중 입니다.");
+                            // DB값 저장하기위한 용도
+                            index = position;
+                            txtSubTitle.setText("새로운 일정을 시작하셨습니다.");
+
+                            // 현재시간을 msec 으로 구한다.
+                            long now = System.currentTimeMillis();
+                            // 현재시간을 date 변수에 저장한다.
+                            Date date = new Date(now);
+                            // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
+                            SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                            // nowDate 변수에 값을 저장한다.
+                            startTime = sdfNow.format(date);
+
+                            chrono.setBase(SystemClock.elapsedRealtime());
+                            chrono.start();
+                            chrono.setTextColor(Color.RED);
+
+                            chrono.setBase(SystemClock.elapsedRealtime());
+                            chrono.start();
+                            chrono.setTextColor(Color.RED);
+                        }
+                    });
+
+
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            Toast.makeText(getActivity().getApplicationContext(), "Cancel Click", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+            });
+
+            chrono.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+
+
+                }
+            });
+
 
 
 
