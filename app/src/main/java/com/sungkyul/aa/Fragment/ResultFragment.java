@@ -129,11 +129,11 @@ public class ResultFragment extends Fragment {
 
         //리스트뷰 연결
         ResultAdapter adapter = new ResultAdapter();
-        adapter.addItme(new ResultItem("청소", "07:30 ~ 07:50", R.drawable.mov01));
-        adapter.addItme(new ResultItem("공부", "08:30 ~ 10:00", R.drawable.mov02));
-        adapter.addItme(new ResultItem("식사", "10:10 ~ 10:40", R.drawable.mov03));
-        adapter.addItme(new ResultItem("운동", "11:00 ~ 12:30", R.drawable.mov04));
-        adapter.addItme(new ResultItem("휴식", "12:30 ~ 13:00", R.drawable.mov05));
+        adapter.addItem(new ResultItem("청소", "07:30", "07:50", "50분", R.drawable.mov01));
+        adapter.addItem(new ResultItem("공부", "08:30", "10:00", "90분", R.drawable.mov02));
+        adapter.addItem(new ResultItem("식사", "10:10", "10:40", "30분", R.drawable.mov03));
+        adapter.addItem(new ResultItem("운동", "11:00", "12:30", "90분", R.drawable.mov04));
+        adapter.addItem(new ResultItem("휴식", "12:30", "13:00", "30분", R.drawable.mov05));
         //어댑터 연결
         listresult.setAdapter(adapter);
 
@@ -289,7 +289,7 @@ public class ResultFragment extends Fragment {
             return items.size();
         }
 
-        public void addItme(ResultItem item){
+        public void addItem(ResultItem item){
             items.add(item);
         }
 
@@ -318,8 +318,11 @@ public class ResultFragment extends Fragment {
 
             ResultItem item = items.get(position);
             resultItemView.setName(item.getName());
+            resultItemView.setstartTime(item.getStarttime());
+            resultItemView.setendTime(item.getEndtime());
             resultItemView.setTime(item.getTime());
             resultItemView.setImgae(item.getResid());
+
 
             return resultItemView;
         }

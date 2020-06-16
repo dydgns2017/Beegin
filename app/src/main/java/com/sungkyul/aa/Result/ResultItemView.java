@@ -15,6 +15,8 @@ public class ResultItemView extends LinearLayout {
 
     //언제 어디서든 사용하게 하기위해
     TextView txt_result_name, txt_result_time;
+    TextView txt_result_starttime, txt_result_endtime;
+
     ImageView Img_result_list;
 
     public ResultItemView(Context context) {
@@ -33,6 +35,9 @@ public class ResultItemView extends LinearLayout {
         txt_result_name = findViewById(R.id.txt_result_name);
         txt_result_time = findViewById(R.id.txt_result_time);
         Img_result_list = findViewById(R.id.Img_result_list);
+        txt_result_starttime = findViewById(R.id.txt_result_starttime);
+        txt_result_endtime = findViewById(R.id.txt_result_endtime);
+
 
     }
 
@@ -43,6 +48,16 @@ public class ResultItemView extends LinearLayout {
     public void setTime(String time){
         txt_result_time.setText(time);
     }
+
+    public void setstartTime(String time){
+        txt_result_starttime.setText(time);
+    }
+
+    public void setendTime(String time){
+        txt_result_endtime.setText(time);
+    }
+
+
 
     public void setImgae(int resid){
         Img_result_list.setImageResource(resid);
