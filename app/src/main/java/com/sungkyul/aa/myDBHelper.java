@@ -22,9 +22,10 @@ public class myDBHelper extends SQLiteOpenHelper {
                 "timedata TEXT );");
     }
 
-    public void insert(SQLiteDatabase db, String activityName, String timeStart, String timeEnd){
-        Log.i(this.getClass().getName(),activityName + timeEnd +timeStart);
-        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend) VALUES ('" + activityName + "', '" + timeStart + "', '" + timeEnd + "');");
+    public void insert(SQLiteDatabase db, String activityName, String timeStart, String timeEnd, String timeGap){
+        Log.i(this.getClass().getName(),activityName + timeEnd +timeStart + " => " + timeGap);
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) VALUES ('" + activityName + "', '" + timeStart
+                + "', '" + timeEnd + "', '" + timeGap + "');");
 
     }
 

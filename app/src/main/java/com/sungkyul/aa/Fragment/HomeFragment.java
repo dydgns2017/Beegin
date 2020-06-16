@@ -32,6 +32,7 @@ import com.sungkyul.aa.AddWorkActivity;
 import com.sungkyul.aa.BackPressHandler;
 import com.sungkyul.aa.R;
 import com.sungkyul.aa.myDBHelper;
+import com.sungkyul.aa.timeProcess;
 
 import org.w3c.dom.Text;
 
@@ -54,7 +55,9 @@ public class HomeFragment extends Fragment {
     ArrayList<String> textArr = new ArrayList<String>();
     public static myDBHelper myDBHelper;
     public static SQLiteDatabase db;
-    String startTime, endTime;
+    public static timeProcess timePro;
+
+    String startTime, endTime, timeGap;
     Integer[] posterID = { R.drawable.icon01, R.drawable.icon02, R.drawable.icon03, R.drawable.icon04, R.drawable.icon05, R.drawable.icon06,
             R.drawable.icon07, R.drawable.icon08, R.drawable.icon09, R.drawable.icon10, R.drawable.icon11, R.drawable.icon12  };
 
@@ -107,8 +110,14 @@ public class HomeFragment extends Fragment {
 
                 myDBHelper = new myDBHelper(getActivity());
                 db = myDBHelper.getWritableDatabase();
+                try {
+                    // 호출 대상 매서드
+                    timeGap = timeProcess.timePro(startTime, endTime, null);
+                } catch (Exception e) {
+                    // 예외처리
+                }
 
-                myDBHelper.insert(db , posterText[index], startTime, endTime);
+                myDBHelper.insert(db , posterText[index], startTime, endTime, timeGap);
 
 
 
