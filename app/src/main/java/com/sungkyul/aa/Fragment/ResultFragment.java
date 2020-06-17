@@ -1,6 +1,8 @@
 package com.sungkyul.aa.Fragment;
 
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -32,6 +34,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.sungkyul.aa.R;
 import com.sungkyul.aa.Result.ResultItem;
 import com.sungkyul.aa.Result.ResultItemView;
+import com.sungkyul.aa.myDBHelper;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -55,6 +58,9 @@ public class ResultFragment extends Fragment {
     PieChart pieChart;
     //funChart
     LinearLayout Linerfun;
+    //DB
+    public static com.sungkyul.aa.myDBHelper myDBHelper;
+    public static SQLiteDatabase db;
 
     //날짜값
     int dyear = c.get(Calendar.YEAR);
@@ -129,11 +135,30 @@ public class ResultFragment extends Fragment {
 
         //리스트뷰 연결
         ResultAdapter adapter = new ResultAdapter();
-        adapter.addItem(new ResultItem("청소", "07:30", "07:50", "50분", R.drawable.mov01));
-        adapter.addItem(new ResultItem("공부", "08:30", "10:00", "90분", R.drawable.mov02));
-        adapter.addItem(new ResultItem("식사", "10:10", "10:40", "30분", R.drawable.mov03));
-        adapter.addItem(new ResultItem("운동", "11:00", "12:30", "90분", R.drawable.mov04));
-        adapter.addItem(new ResultItem("휴식", "12:30", "13:00", "30분", R.drawable.mov05));
+        myDBHelper = new myDBHelper(getActivity());
+        db = myDBHelper.getWritableDatabase();
+        String selectAll = "Select * FROM time_db";
+        Cursor cursor = db.rawQuery(selectAll,null);
+        int count = 0;
+        while(cursor.moveToNext()){
+            String activityname = cursor.getString(1);
+            String starttime = cursor.getString(2);
+            starttime = starttime.split(" ")[1].split(":")[0] +
+                        ":" + starttime.split(" ")[1].split(":")[1];
+            String endtime = cursor.getString(3);
+            endtime = endtime.split(" ")[1].split(":")[0] +
+                    ":" + endtime.split(" ")[1].split(":")[1];
+            String timedata = cursor.getString(4);
+            adapter.addItem(new ResultItem(activityname, starttime, endtime, timedata,R.drawable.mov02));
+        }
+
+        db.close();
+
+//        adapter.addItem(new ResultItem("청소", "07:30", "07:50", "50분", R.drawable.mov01));
+//        adapter.addItem(new ResultItem("공부", "08:30", "10:00", "90분", R.drawable.mov02));
+//        adapter.addItem(new ResultItem("식사", "10:10", "10:40", "30분", R.drawable.mov03));
+//        adapter.addItem(new ResultItem("운동", "11:00", "12:30", "90분", R.drawable.mov04));
+//        adapter.addItem(new ResultItem("휴식", "12:30", "13:00", "30분", R.drawable.mov05));
         //어댑터 연결
         listresult.setAdapter(adapter);
 
