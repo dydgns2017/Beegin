@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.nfc.Tag;
@@ -33,10 +34,16 @@ public class AddWorkActivity extends Activity {
 
     // 활동을 추가할때 사용하는 클래스 입니다.
 
+    final int[] imgResource = {R.drawable.icon01, R.drawable.icon02,  R.drawable.icon03, R.drawable.icon04, R.drawable.icon05, R.drawable.icon06, R.drawable.icon07,
+            R.drawable.icon08, R.drawable.icon09, R.drawable.icon10, R.drawable.icon11, R.drawable.icon12};
 
+    int index;
     Button btnadd;
     EditText edtName;
     ImageButton btnaddImg;
+
+    public static myDBHelper myDBHelper;
+    public static SQLiteDatabase db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +59,7 @@ public class AddWorkActivity extends Activity {
             }
         });
 
+        myDBHelper = new myDBHelper(this);
         btnadd = (Button)findViewById(R.id.btnAdd);
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +69,10 @@ public class AddWorkActivity extends Activity {
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("class" ,option);
+
+                db = myDBHelper.getWritableDatabase();
+                myDBHelper.activity_insert(db, edtName.getText().toString(), imgResource[index]);
+                db.close();
 
                 startActivity(intent);
                 finish();
@@ -81,10 +93,8 @@ public class AddWorkActivity extends Activity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog ad = builder.create();
 
-        final int[] imgResource = {R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01,
-                R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01,
-                R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01,
-                R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov01, R.drawable.mov02, };
+        final int[] imgResource = {R.drawable.icon01, R.drawable.icon02,  R.drawable.icon03, R.drawable.icon04, R.drawable.icon05, R.drawable.icon06, R.drawable.icon07,
+                R.drawable.icon08, R.drawable.icon09, R.drawable.icon10, R.drawable.icon11, R.drawable.icon12};
 
         for (int i = 0; i < imgResource.length; i++) {
             picArr.add(BitmapFactory.decodeResource(getResources(), imgResource[i]));
@@ -100,6 +110,7 @@ public class AddWorkActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "test" + position, Toast.LENGTH_LONG).show();
                 btnaddImg.setBackgroundResource(imgResource[position]);
                 ad.dismiss();
+                index = position;
             }
         });
 

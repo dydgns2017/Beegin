@@ -109,6 +109,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
+    }
 
     public void setBottomBar(){
         mMainFrame = (FrameLayout)findViewById(R.id.main_frame);

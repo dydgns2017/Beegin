@@ -3,19 +3,28 @@ package com.sungkyul.aa.Fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.Image;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Message;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +40,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sungkyul.aa.AddWorkActivity;
 import com.sungkyul.aa.BackPressHandler;
+import com.sungkyul.aa.MainActivity;
 import com.sungkyul.aa.R;
 import com.sungkyul.aa.myDBHelper;
 import com.sungkyul.aa.timeProcess;
@@ -60,20 +70,23 @@ public class HomeFragment extends Fragment {
     public static timeProcess timePro;
 
     String startTime, endTime, timeGap;
-    Integer[] posterID = { R.drawable.icon01, R.drawable.icon02, R.drawable.icon03, R.drawable.icon04, R.drawable.icon05, R.drawable.icon06,
-            R.drawable.icon07, R.drawable.icon08, R.drawable.icon09, R.drawable.icon10, R.drawable.icon11, R.drawable.icon12  };
+    Integer posterID[] = new Integer[30];
+    String posterText[] = new String[30];
 
-    String[] posterText = { "수면", "이동",
-            "식사", "운동","일", "쇼핑","여가 활동", "집안일",
-            "영화", "걷기","공부", "인터넷",
-          };
-
+    // 현재 데이터 개수 -1
+    int i=0;
+    int length;
 
     Chronometer chrono;
     View view;
     Button btnStop;
     ImageView imgMain;
     TextView txtTitle, txtSubTitle;
+
+    private void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
+    }
 
     public HomeFragment() {
         // Required empty public constructor
@@ -85,6 +98,19 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, null);
 
+        myDBHelper = new myDBHelper(getActivity());
+        db = myDBHelper.getReadableDatabase();
+        Cursor cursor;
+        cursor = db.rawQuery("SELECT activityname, img_src FROM user_activity;", null);
+
+        while(cursor.moveToNext()){
+            posterText[i] = cursor.getString(0);
+            posterID[i] = cursor.getInt(1);
+            Log.i(this.getClass().getName(),"이게 제일 중요!! -> "+ posterID[i] + posterText[i] + "-->" + i);
+            i++;
+            length = i;
+        }
+
         // 처음에는 보이지 않게 설정
         chrono = (Chronometer) view.findViewById(R.id.chronometer1);
         chrono.setVisibility(View.INVISIBLE);
@@ -93,6 +119,7 @@ public class HomeFragment extends Fragment {
         imgMain = (ImageView)view.findViewById(R.id.mainImage);
         txtSubTitle = (TextView)view.findViewById(R.id.mainSubTitle);
         txtTitle = (TextView)view.findViewById(R.id.mainTitle);
+
 
 
         // 버튼이 처음에는 보이지 않게 설정
@@ -135,7 +162,7 @@ public class HomeFragment extends Fragment {
                         btnStop.setVisibility(View.INVISIBLE);
                         Toast.makeText(getActivity(), "활동이 종료되었습니다.", Toast.LENGTH_LONG).show();
                         imgMain.setImageResource(R.drawable.no);
-                        txtTitle.setText("하는게 없습니다...");
+                        txtTitle.setText("현재 활동 내용이 없습니다.");
                         txtSubTitle.setText(" ");
 
                         chrono.setBase(SystemClock.elapsedRealtime());
@@ -167,12 +194,12 @@ public class HomeFragment extends Fragment {
         });
 
 
-        for(int i=0; i<12; i++){
+        for(int i=0; i<length; i++){
             picArr.add(BitmapFactory.decodeResource(getResources(), posterID[i]));
         }
 
 
-        for (int i = 0 ; i < 12 ; i++) {
+        for (int i = 0 ; i<length ; i++) {
             textArr.add(posterText[i]);
         }
 
@@ -184,9 +211,7 @@ public class HomeFragment extends Fragment {
     }
 
     public class gridAdapter extends BaseAdapter {
-
         LayoutInflater inflater;
-
 
         public gridAdapter() {
             inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -238,6 +263,8 @@ public class HomeFragment extends Fragment {
                             index = position;
                             txtSubTitle.setText("새로운 일정을 시작하셨습니다.");
 
+
+
                             // 현재시간을 msec 으로 구한다.
                             long now = System.currentTimeMillis();
                             // 현재시간을 date 변수에 저장한다.
@@ -277,15 +304,16 @@ public class HomeFragment extends Fragment {
 
                 }
             });
-
-
-
-
-
             return convertView;
 
         }
     }
+
+
+
+
+
+
 
 
 

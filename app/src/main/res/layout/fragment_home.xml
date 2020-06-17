@@ -28,9 +28,9 @@
                 android:id="@+id/mainTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="으잉?"
+                android:text="현재 활동 내용이 없습니다."
                 android:textColor="#000"
-                android:textSize="25dp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 />
 
@@ -93,6 +93,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+
         <GridView
             android:id="@+id/gridView1"
             android:layout_width="match_parent"
@@ -116,6 +118,8 @@
             app:elevation="6dp"
             android:id="@+id/btnAddActivity"
             />
+
+
 
         <!-- <com.google.android.material.button.MaterialButton
              android:layout_marginRight="30dp"
