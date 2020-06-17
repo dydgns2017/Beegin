@@ -29,6 +29,7 @@ public class myDBHelper extends SQLiteOpenHelper {
 
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // 버전이 업그레이드되면 기존꺼 삭제하구 db새로 생성
