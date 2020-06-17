@@ -20,6 +20,7 @@ import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Message;
@@ -70,6 +71,8 @@ public class HomeFragment extends Fragment {
     public static timeProcess timePro;
 
     String startTime, endTime, timeGap;
+
+    // 최대30개
     Integer posterID[] = new Integer[30];
     String posterText[] = new String[30];
 
@@ -86,6 +89,11 @@ public class HomeFragment extends Fragment {
     private void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
+    }
+
+
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
     }
 
     public HomeFragment() {
@@ -244,6 +252,43 @@ public class HomeFragment extends Fragment {
             imageView.setImageBitmap(picArr.get(position));
             textView.setText(textArr.get(position));
 
+
+            imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("활동 삭제").setMessage("선택하신 활동을 삭제하시겠습니까??");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+
+                           myDBHelper = new myDBHelper(getActivity());
+                           db = myDBHelper.getWritableDatabase();
+                           myDBHelper.activity_delete(db, posterText[position]);
+                           getActivity().recreate();
+//                            getFragmentManager().beginTransaction().replace(R.id.container, HomeFragment.newInstance()).commit();
+                            // 여기에 refresh()메소드를 삽입해줘야함
+                            Toast.makeText(getActivity(), "성공적으로 활동이 삭제되었습니다.!!" , Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            Toast.makeText(getActivity().getApplicationContext(), "Cancel Click", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+
+                    return false;
+                }
+            });
 
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override

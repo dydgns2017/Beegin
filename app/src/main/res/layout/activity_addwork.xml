@@ -102,6 +102,19 @@
                 android:layout_marginTop="30dp"/>
 
 
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="※ 활동 개수는 최대 30개까지 추가 가능 합니다 ※"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -57,9 +57,8 @@ public class myDBHelper extends SQLiteOpenHelper {
                 + "', '" + timeEnd + "', '" + timeGap + "');");
     }
 
-//    DELETE FROM student WHERE student_id = '20120001';
     public void activity_delete(SQLiteDatabase db, String activityName){
-        db.execSQL("DELETE FROM user_activity WHERE activityname = '" +  activityName + "');");
+        db.execSQL("DELETE FROM user_activity WHERE activityname = '" +  activityName + "';");
     }
 
 
