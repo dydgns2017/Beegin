@@ -11,11 +11,10 @@
 
 
     <ImageView
-
         android:id="@+id/img_grid"
-        android:padding="15dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:padding="10dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:src="@drawable/no"
         android:layout_gravity="center" />
 
@@ -29,7 +28,7 @@
         android:gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:textStyle="bold"
-        android:textSize="12dp"
+        android:textSize="14dp"
         android:textColor="#000"
         android:text="TextView" />
 

@@ -23,6 +23,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ public class HomeFragment extends Fragment {
 
     GridView gridView;
     int index;
+
     //이미지 배열 선언
     ArrayList<Bitmap> picArr = new ArrayList<Bitmap>();
     //텍스트 배열 선언
@@ -91,6 +93,7 @@ public class HomeFragment extends Fragment {
         imgMain = (ImageView)view.findViewById(R.id.mainImage);
         txtSubTitle = (TextView)view.findViewById(R.id.mainSubTitle);
         txtTitle = (TextView)view.findViewById(R.id.mainTitle);
+
 
         // 버튼이 처음에는 보이지 않게 설정
         btnStop = (Button)view.findViewById(R.id.btnStop);
@@ -176,7 +179,6 @@ public class HomeFragment extends Fragment {
 
         gridView = (GridView) view.findViewById(R.id.gridView1);
         gridView.setAdapter(new gridAdapter());
-
 
         return view;
     }
