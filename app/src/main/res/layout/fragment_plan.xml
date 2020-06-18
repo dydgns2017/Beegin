@@ -23,7 +23,7 @@
         app:fabSize="mini"
         app:backgroundTint="@color/colorBlue"
         app:elevation="6dp"
-        android:id="@+id/btnAddActivity"
+        android:id="@+id/btnAddplan"
         />
 
 </LinearLayout>

@@ -27,7 +27,6 @@
             android:textColor="@android:color/holo_blue_dark"
             />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,14 +35,39 @@
 
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="시작 시간"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:text="00:00"
+                android:layout_weight="1"
+                android:id="@+id/plan_txt_nowTime"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:gravity="right"
+                android:layout_weight="1"
+                android:id="@+id/plan_txt_GoalTime"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                style="?android:progressBarStyleHorizontal"
+                android:id="@+id/list_item_progress_bar"
+                />
+
 
         </LinearLayout>
 

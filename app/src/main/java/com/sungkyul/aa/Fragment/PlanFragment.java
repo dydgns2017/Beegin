@@ -34,7 +34,9 @@ public class PlanFragment extends Fragment {
 
 
     View view;
-
+    public static myDBHelper myDBHelper;
+    public static SQLiteDatabase db;
+    FloatingActionButton btnAddplan;
     public PlanFragment() {
         // Required empty public constructor
     }
@@ -46,23 +48,28 @@ public class PlanFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_plan, null);
         ListView listview ;
         ListViewAdapter adapter = new ListViewAdapter();
+        btnAddplan = (FloatingActionButton) view.findViewById(R.id.btnAddplan);
+        btnAddplan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         // 리스트뷰 참조 및 Adapter달기
         listview = (ListView) view.findViewById(R.id.listview1);
 
         // 첫 번째 아이템 추가.
         adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_background),
-                "Box", "Account Box Black 36dp") ;
+                "Box", 30) ;
         // 두 번째 아이템 추가.
         adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_background),
-                "Circle", "Account Circle Black 36dp") ;
+                "Circle", 40) ;
         // 세 번째 아이템 추가.
         adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_background),
-                "Ind", "Assignment Ind Black 36dp") ;
+                "Ind", 100) ;
 
         listview.setAdapter(adapter);
 
-//        return inflater.inflate(R.layout.fragment_plan, container, false);
         return view;
     }
 
