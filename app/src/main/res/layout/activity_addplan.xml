@@ -47,68 +47,93 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:text="활동 유형 선택"
+                    android:text="이름"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:layout_marginTop="20dp" />
 
-                <ImageButton
-                    android:id="@+id/btnaddimage"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@android:drawable/ic_menu_search" />
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/plan_txt_selected_activity"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edt_plan_add_name"
+                    />
 
             </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <RadioGroup
+
+                android:id="@+id/radioGroup"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rdoActivity"
+                    android:text="활동 유형 선택"
+                    />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rdoTime"
+                    android:text="목표 시간 선택"
+                    />
+
+            </RadioGroup>
+        </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:text="목표 시간 선택"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_horizontal"
+                <GridView
+                    android:id="@+id/plan_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:gravity="center"
-                    android:layout_marginTop="20dp" />
+                    android:numColumns="4" >
+                </GridView>
 
-                <ImageButton
-                    android:id="@+id/btnaddimage"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@android:drawable/ic_menu_search" />
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/plan_txt_selected_activity"/>
+
+            <TimePicker
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:timePickerMode="spinner"
+                android:id="@+id/timepicker1"
+                />
+
 
 
             </LinearLayout>
-
 
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="계획 추가"
-                android:id="@+id/btnAdd"
+                android:id="@+id/btnAddAddPlan"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"/>
 
