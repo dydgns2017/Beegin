@@ -61,6 +61,20 @@ public class ResultItem {
         this.endtime = endtime;
     }
 
+    public int getSecond(){
+        String time = this.time;
+        String hour = time.split(":")[0];
+        String minute = time.split(":")[1];
+        String second = time.split(":")[2];
+
+        int total = Integer.parseInt(hour)*3600 +
+                    Integer.parseInt(minute)*60 +
+                    Integer.parseInt(second);
+
+
+        return total;
+    }
+
     @NonNull
     @Override
     public String toString() {

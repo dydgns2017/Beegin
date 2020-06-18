@@ -33,6 +33,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.sungkyul.aa.R;
+import com.sungkyul.aa.Result.ResultActivity;
 import com.sungkyul.aa.Result.ResultItem;
 import com.sungkyul.aa.Result.ResultItemView;
 import com.sungkyul.aa.myDBHelper;
@@ -117,6 +118,11 @@ public class ResultFragment extends Fragment {
         Cursor cursor = db.rawQuery(selectDateAll,null);
         int resource = 0;
         String getImgsrc = "";
+
+        //아이템 객체 배열
+        ResultItem[] resultItems = new ResultItem[cursor.getCount()];
+
+
         while(cursor.moveToNext()){
             Log.i(this.getClass().getName(), "Cursor안에들어옴!");
             String activityname = cursor.getString(1);
@@ -140,6 +146,9 @@ public class ResultFragment extends Fragment {
             cursor1.moveToNext();
             resource = cursor1.getInt(2);
 
+
+            // 파이차트를 쓰기위해
+            resultItems[cursor.getPosition()] = new ResultItem(activityname, starttime, endtime, cursor.getString(4), resource);
 
             adapter.addItem(new ResultItem(activityname, starttime, endtime, timedata, resource));
         }
@@ -167,12 +176,42 @@ public class ResultFragment extends Fragment {
 
         ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
 
-        yValues.add(new PieEntry(20f,"청소"));
-        yValues.add(new PieEntry(90f,"공부"));
-        yValues.add(new PieEntry(30f,"식사"));
-        yValues.add(new PieEntry(90f,"운동"));
-        yValues.add(new PieEntry(30f,"휴식"));
-        yValues.add(new PieEntry(30f,"운동"));
+        ArrayList<String> namearr = new ArrayList<>();
+        for (int i = 0;i<resultItems.length;i++) {
+            if(!namearr.contains(resultItems[i].getName())){
+                namearr.add(resultItems[i].getName());
+            }
+        }
+        Log.i(this.getClass().getName(), "namearr.size ==> " + namearr.size());
+
+
+        //시간이랑 이름만있는거
+        ResultActivity[] resultActivities = new ResultActivity[namearr.size()];
+        for (int i =0; i<namearr.size(); i++) {
+            resultActivities[i] = new ResultActivity(namearr.get(i),0);
+            Log.i(this.getClass().getName(), "namearr.get[" + i + "] ==> " +namearr.get(i));
+        }
+
+
+        Log.i(this.getClass().getName(), "resultActivities.length() --> " + resultActivities.length);
+        Log.i(this.getClass().getName(), "resultItems.length() -->  " + resultItems.length);
+
+        for (int i = 0; i<resultActivities.length; i++){ //6
+            for (int j = 0;j<resultItems.length; j++){ //10
+                if(resultActivities[i].getName().equals(resultItems[j].getName())){
+                    Log.i(this.getClass().getName(), "I -->" + i + "     j --> " + j);
+                    Log.i(this.getClass().getName(), "resultActivity["+i+"].getname ==> " + resultActivities[i].getName());
+                    Log.i(this.getClass().getName(), "resultItems["+j+"].getname ==> " + resultItems[j].getName());
+                    resultActivities[i].PlusTime(resultItems[j].getSecond());
+                }
+            }
+
+        }
+
+        //yValues에 값추가해주기
+        for (int i = 0;i<resultActivities.length;i++){
+            yValues.add(new PieEntry(resultActivities[i].getTime() ,resultActivities[i].getName()));
+        }
 
         //파이차트의 라벨
         Description description = new Description();
