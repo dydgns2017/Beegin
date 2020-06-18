@@ -60,6 +60,8 @@ public class ResultFragment extends Fragment {
     PieChart pieChart;
     //funChart
     LinearLayout Linerfun;
+    ImageView resultIMG;
+    TextView txtDay, txtHour, txtMinute, txtWage, txtCurry, txtSing, txtPcRoom;
     //DB
     public static com.sungkyul.aa.myDBHelper myDBHelper;
     public static SQLiteDatabase db;
@@ -92,7 +94,14 @@ public class ResultFragment extends Fragment {
         pieChart = (PieChart)rootview.findViewById(R.id.pieChart);
         Linerfun = (LinearLayout)rootview.findViewById(R.id.Linerfun);
 
-
+        resultIMG = (ImageView)rootview.findViewById(R.id.resultImg);
+        txtDay = (TextView)rootview.findViewById(R.id.txtDay);
+        txtHour = (TextView)rootview.findViewById(R.id.txtHour);
+        txtMinute = (TextView)rootview.findViewById(R.id.txtMinute);
+        txtWage = (TextView)rootview.findViewById(R.id.txtWage);
+        txtCurry = (TextView)rootview.findViewById(R.id.txtCurry);
+        txtSing = (TextView)rootview.findViewById(R.id.txtSing);
+        txtPcRoom = (TextView)rootview.findViewById(R.id.txtPCRoom);
 
 
         //리스트뷰 연결
@@ -152,7 +161,7 @@ public class ResultFragment extends Fragment {
 
             adapter.addItem(new ResultItem(activityname, starttime, endtime, timedata, resource));
         }
-        db.close();
+//        db.close();
 
 //        adapter.addItem(new ResultItem("청소", "07:30", "07:50", "50분", R.drawable.mov01));
 //        adapter.addItem(new ResultItem("공부", "08:30", "10:00", "90분", R.drawable.mov02));
@@ -307,7 +316,55 @@ public class ResultFragment extends Fragment {
             }
         });
 
-        // Inflate the layout for this fragment
+        //Funchart--Code
+
+        final int[] imgResource = {R.drawable.icon01, R.drawable.icon02,  R.drawable.icon03, R.drawable.icon04, R.drawable.icon05, R.drawable.icon06, R.drawable.icon07,
+                R.drawable.icon08, R.drawable.icon09, R.drawable.icon10, R.drawable.icon11, R.drawable.icon12};
+
+        resultIMG.setImageResource(imgResource[8]);
+        int img_src = imgResource[8];
+        Log.i(this.getClass().getName(), "img_src --> " + img_src);
+
+        //이미지의 맞는 이름을 같고오기 위한 쿼리
+
+
+        String selectImgAll = "Select * FROM user_activity WHERE img_src = '" + img_src +"'";
+
+        String activityname = "";
+        Log.i(this.getClass().getName(), "설렉트문!! --> " + selectImgAll);
+        Log.i(this.getClass().getName(), "이미지 리소스1!! --> " + imgResource[8]);
+
+        Cursor cursor2 = db.rawQuery(selectImgAll,null);
+        cursor2.moveToNext();
+        activityname = cursor2.getString(1);
+
+        //모든 행동을 가져오기 위한 코드
+        String selectdata = "Select * FROM time_db WHERE activityname = '" + activityname + "'";
+        cursor2 = db.rawQuery(selectdata,null);
+        int total_second = 0;
+
+        while (cursor2.moveToNext()){
+            String timedata = cursor2.getString(4);
+            String timedata1 = timedata.split(":")[0];
+            String timedata2 = timedata.split(":")[1];
+            String timedata3 = timedata.split(":")[2];
+            total_second += Integer.parseInt(timedata1)*3600+
+                            Integer.parseInt(timedata2)*60+
+                            Integer.parseInt(timedata3);
+        }
+        Log.i(this.getClass().getName(), "total_second ==> " + total_second);
+
+        //계산해서 값넣어주기
+        txtDay.setText(total_second / 86400 +"일");
+        txtHour.setText(total_second / 3600 +"시간");
+        txtMinute.setText(total_second / 60 +"분");
+        txtWage.setText(total_second / 3600 *8590 +"원 벌기");
+        txtCurry.setText(total_second / 180 + "개 제조");
+        txtSing.setText(total_second / 229 +"곡 부르기");
+        txtPcRoom.setText(total_second / 3600 * 1000 +"원");
+
+
+        db.close();
         return rootview;
     }
 

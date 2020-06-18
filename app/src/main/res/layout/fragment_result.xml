@@ -86,10 +86,11 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="100dp"
-                android:src="@drawable/mov01"
+                android:src="@drawable/icon01"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
+                android:id="@+id/resultImg"
                 />
 
             <TextView
@@ -120,6 +121,7 @@
                 android:text="31일"
                 android:gravity="center"
                 android:textSize="20dp"
+                android:id="@+id/txtDay"
                 />
 
             <TextView
@@ -130,6 +132,7 @@
                 android:text="748시간"
                 android:gravity="center"
                 android:textSize="20dp"
+                android:id="@+id/txtHour"
                 />
 
             <TextView
@@ -140,6 +143,7 @@
                 android:text="44,909분"
                 android:gravity="center"
                 android:textSize="20dp"
+                android:id="@+id/txtMinute"
                 />
 
 
@@ -161,6 +165,7 @@
                 />
 
             <TextView
+                android:id="@+id/txtWage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="5,827,080원 벌기"
@@ -178,6 +183,7 @@
                 />
 
             <TextView
+                android:id="@+id/txtCurry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="13,489개 제조"
@@ -196,6 +202,7 @@
                 />
 
             <TextView
+                android:id="@+id/txtSing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="11,562곡 부르기"
@@ -214,6 +221,7 @@
                 />
 
             <TextView
+                android:id="@+id/txtPCRoom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="674,431원"
