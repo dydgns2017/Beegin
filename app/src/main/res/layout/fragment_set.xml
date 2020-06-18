@@ -21,6 +21,7 @@
     <ImageView
         android:layout_height="48dp"
         android:layout_width="48dp"
+        android:padding="5dp"
         android:src="@drawable/baseline_notifications_black_48dp"
         />
 
@@ -28,12 +29,15 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:text=" 공지 사항"
-        android:textSize="36dp"/>
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity=""
+        android:textSize="25dp"/>
 
     </LinearLayout>
 
     <View
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_width="match_parent"
         android:background="#000000"/>
 
@@ -46,6 +50,7 @@
 
     <ImageView
         android:layout_height="48dp"
+        android:padding="5dp"
         android:layout_width="48dp"
         android:src="@drawable/baseline_question_answer_black_48dp"/>
 
@@ -53,12 +58,15 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:text=" 질문과 답변"
-        android:textSize="36dp"/>
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity=""
+        android:textSize="25dp"/>
 
     </LinearLayout>
 
     <View
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_width="match_parent"
         android:background="#000000"/>
 
@@ -67,10 +75,12 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/LinerHelp"
+
         android:layout_marginTop="5dp">
 
     <ImageView
         android:layout_height="48dp"
+        android:padding="5dp"
         android:layout_width="48dp"
         android:src="@drawable/baseline_help_black_48dp"/>
 
@@ -78,12 +88,15 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:text=" 도움말"
-        android:textSize="36dp"/>
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity=""
+        android:textSize="25dp"/>
 
 </LinearLayout>
 
     <View
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_width="match_parent"
         android:background="#000000"/>
 
@@ -97,45 +110,26 @@
     <ImageView
         android:layout_height="48dp"
         android:layout_width="48dp"
+
+        android:padding="5dp"
         android:src="@drawable/baseline_settings_black_48dp"/>
 
     <TextView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:text=" 설정"
-        android:textSize="36dp"/>
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity=""
+        android:textSize="25dp"/>
 
 </LinearLayout>
 
-    <View
-        android:layout_height="2dp"
-        android:layout_width="match_parent"
-        android:background="#000000"/>
 
-
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/LinerLogout"
-        android:layout_marginTop="5dp">
-
-    <ImageView
-        android:layout_height="48dp"
-        android:layout_width="48dp"
-        android:src="@drawable/baseline_notifications_black_48dp"/>
-
-    <TextView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:text=" 로그아웃"
-        android:textSize="36dp"/>
-
-    </LinearLayout>
-
-    <View
-        android:layout_height="2dp"
-        android:layout_width="match_parent"
-        android:background="#000000"/>
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#000000"/>
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -146,18 +140,22 @@
             <ImageView
                 android:layout_height="48dp"
                 android:layout_width="48dp"
+                android:padding="5dp"
                 android:src="@drawable/baseline_cloud_upload_black_48dp"/>
 
             <TextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:text=" 데이터 백업"
-                android:textSize="36dp"/>
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity=""
+                android:textSize="25dp"/>
 
         </LinearLayout>
 
         <View
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_width="match_parent"
             android:background="#000000"/>
 
@@ -170,21 +168,57 @@
             <ImageView
                 android:layout_height="48dp"
                 android:layout_width="48dp"
+                android:padding="5dp"
                 android:src="@drawable/baseline_cloud_download_black_48dp"/>
 
             <TextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:text=" 데이터 내려받기"
-                android:textSize="36dp"/>
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:gravity=""
+                android:textSize="25dp"/>
 
         </LinearLayout>
 
         <View
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_width="match_parent"
             android:background="#000000"/>
 
-</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/LinerLogout"
+        android:layout_marginTop="5dp">
+
+    <ImageView
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:padding="5dp"
+        android:src="@drawable/logout"/>
+
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:text=" 로그아웃"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity=""
+        android:textSize="25dp"/>
+
+    </LinearLayout>
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#000000"/>
+
+
+
+
+    </LinearLayout>
 
 </FrameLayout>

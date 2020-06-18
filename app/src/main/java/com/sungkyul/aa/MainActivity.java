@@ -95,20 +95,30 @@ public class MainActivity extends AppCompatActivity {
         //DB생성을 위한 코드 WY : 06-16 추가
         myDBHelper = new myDBHelper(this);
                db = myDBHelper.getWritableDatabase();
-//        db.execSQL("INSERT INTO time_db VALUES (1, '운동', '2020-06-16 15:00:00'," +
-//                " '2020-06-16 15:30:00', '30' );");
-//        db.execSQL("INSERT INTO time_db VALUES (2, '운동', '2020-06-16 16:00:00'," +
-//                " '2020-06-16 16:50:00', '50' )");
-//        db.execSQL("INSERT INTO time_db VALUES (3, '독서', '2020-06-16 17:00:00'," +
-//                " '2020-06-16 17:55:00', '55' )");
-        db.close();
+//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('여가활동', '2020/06/17 11:22:00', '2020/06/17 12:00:00', '0:38:0' )");
+//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('인터넷', '2020/06/16 11:22:00', '2020/06/16 12:00:00', '0:38:0' )");
+//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('여가활동', '2020/06/05 11:22:00', '2020/06/05 12:00:00', '0:38:0' )");
 
+
+        db.close();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, homeFragment).commit();
         setBottomBar();
 
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
+    }
 
     public void setBottomBar(){
         mMainFrame = (FrameLayout)findViewById(R.id.main_frame);
@@ -255,4 +265,5 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
 
     }*/
+
 }

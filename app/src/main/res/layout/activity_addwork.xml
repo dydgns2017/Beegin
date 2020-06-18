@@ -22,7 +22,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+
+            >
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,21 +35,85 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="활동명"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp" />
+
             <EditText
                 android:hint="내용을 입력하세요."
                 android:id="@+id/edtName"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="아이콘"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp" />
+
+    <ImageButton
+        android:id="@+id/btnaddimage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/ic_menu_search" />
+
+
+
+
+</LinearLayout>
+
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add"
+                android:text="활동 추가"
                 android:id="@+id/btnAdd"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"/>
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="※ 활동 개수는 최대 30개까지 추가 가능 합니다 ※"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

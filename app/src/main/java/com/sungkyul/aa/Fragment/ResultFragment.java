@@ -1,11 +1,14 @@
 package com.sungkyul.aa.Fragment;
 
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +35,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.sungkyul.aa.R;
 import com.sungkyul.aa.Result.ResultItem;
 import com.sungkyul.aa.Result.ResultItemView;
+import com.sungkyul.aa.myDBHelper;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -55,6 +59,9 @@ public class ResultFragment extends Fragment {
     PieChart pieChart;
     //funChart
     LinearLayout Linerfun;
+    //DB
+    public static com.sungkyul.aa.myDBHelper myDBHelper;
+    public static SQLiteDatabase db;
 
     //날짜값
     int dyear = c.get(Calendar.YEAR);
@@ -84,6 +91,69 @@ public class ResultFragment extends Fragment {
         pieChart = (PieChart)rootview.findViewById(R.id.pieChart);
         Linerfun = (LinearLayout)rootview.findViewById(R.id.Linerfun);
 
+
+
+
+        //리스트뷰 연결
+        final ResultAdapter adapter = new ResultAdapter();
+        myDBHelper = new myDBHelper(getActivity());
+        db = myDBHelper.getWritableDatabase();
+        String selectAll = "Select * FROM time_db";
+        String strdmonth10 = dmonth +"";
+        if(Integer.parseInt(strdmonth10) < 10) strdmonth10 = "0"+strdmonth10;
+        String strdayofMonth10 = ddayofmonth +"";
+        if(Integer.parseInt(strdayofMonth10) < 10) strdayofMonth10 = "0"+strdayofMonth10;
+
+
+
+        String timeHMS = dyear + "/" + strdmonth10 + "/" + strdayofMonth10 ;
+        String selectDateAll = "Select * FROM time_db WHERE timestart LIKE '" + timeHMS + "%'" ;
+
+        Log.i(this.getClass().getName(), "Select * FROM time_db WHERE timestart LIKE '" + timeHMS + "%'");
+        Log.i(this.getClass().getName(), "dyear --> " + dyear);
+        Log.i(this.getClass().getName(), "strdmonth10 --> " + strdmonth10);
+        Log.i(this.getClass().getName(), "strddayofmonth --> " + strdayofMonth10);
+
+        Cursor cursor = db.rawQuery(selectDateAll,null);
+        int resource = 0;
+        String getImgsrc = "";
+        while(cursor.moveToNext()){
+            Log.i(this.getClass().getName(), "Cursor안에들어옴!");
+            String activityname = cursor.getString(1);
+            String starttime = cursor.getString(2);
+            starttime = starttime.split(" ")[1].split(":")[0] +
+                        ":" + starttime.split(" ")[1].split(":")[1];
+            String endtime = cursor.getString(3);
+            endtime = endtime.split(" ")[1].split(":")[0] +
+                    ":" + endtime.split(" ")[1].split(":")[1];
+            String timedata = cursor.getString(4);
+//            timedata = timedata.split(":")[0] + ":" + timedata.split(":")[1];
+            String timeHour = timedata.split(":")[0];
+            String timeMinute = timedata.split(":")[1];
+
+            if(Integer.parseInt(timeHour) < 10) timeHour = "0" + timeHour;
+            if(Integer.parseInt(timeMinute) < 10) timeMinute = "0" + timeMinute;
+            timedata = timeHour + " : " + timeMinute;
+
+            getImgsrc = "Select * FROM user_activity WHERE activityname = " + "'" +activityname +"'";
+            Cursor cursor1 = db.rawQuery(getImgsrc,null);
+            cursor1.moveToNext();
+            resource = cursor1.getInt(2);
+
+
+            adapter.addItem(new ResultItem(activityname, starttime, endtime, timedata, resource));
+        }
+        db.close();
+
+//        adapter.addItem(new ResultItem("청소", "07:30", "07:50", "50분", R.drawable.mov01));
+//        adapter.addItem(new ResultItem("공부", "08:30", "10:00", "90분", R.drawable.mov02));
+//        adapter.addItem(new ResultItem("식사", "10:10", "10:40", "30분", R.drawable.mov03));
+//        adapter.addItem(new ResultItem("운동", "11:00", "12:30", "90분", R.drawable.mov04));
+//        adapter.addItem(new ResultItem("휴식", "12:30", "13:00", "30분", R.drawable.mov05));
+        //어댑터 연결
+        listresult.setAdapter(adapter);
+
+
         ///////////////////////Start_PIECHART//////////////////////////////////////////////////
         pieChart.setUsePercentValues(true); //퍼센트를 사용하겠다.
         pieChart.getDescription().setEnabled(false);
@@ -102,6 +172,7 @@ public class ResultFragment extends Fragment {
         yValues.add(new PieEntry(30f,"식사"));
         yValues.add(new PieEntry(90f,"운동"));
         yValues.add(new PieEntry(30f,"휴식"));
+        yValues.add(new PieEntry(30f,"운동"));
 
         //파이차트의 라벨
         Description description = new Description();
@@ -109,8 +180,6 @@ public class ResultFragment extends Fragment {
         description.setTextSize(15);
         description.setPosition(870,100);
         pieChart.setDescription(description);
-
-//        pieChart.animateY(1000, Easing.EasingFunction.class.cast(2));
 
         PieDataSet dataSet = new PieDataSet(yValues, "");
         dataSet.setSliceSpace(3f);
@@ -125,18 +194,6 @@ public class ResultFragment extends Fragment {
         pieChart.setData(data);
 
         ///////////////////////END_PIECHART//////////////////////////////////////////////////
-
-
-        //리스트뷰 연결
-        ResultAdapter adapter = new ResultAdapter();
-        adapter.addItem(new ResultItem("청소", "07:30", "07:50", "50분", R.drawable.mov01));
-        adapter.addItem(new ResultItem("공부", "08:30", "10:00", "90분", R.drawable.mov02));
-        adapter.addItem(new ResultItem("식사", "10:10", "10:40", "30분", R.drawable.mov03));
-        adapter.addItem(new ResultItem("운동", "11:00", "12:30", "90분", R.drawable.mov04));
-        adapter.addItem(new ResultItem("휴식", "12:30", "13:00", "30분", R.drawable.mov05));
-        //어댑터 연결
-        listresult.setAdapter(adapter);
-
 
         //현재날짜로 설정하기
         txtDate.setText(dyear + "-" + dmonth + "-" + ddayofmonth);
@@ -175,9 +232,11 @@ public class ResultFragment extends Fragment {
                 txtDate.setText(year + "-" + (month+1) + "-" + dayOfMonth);
                 c.set(year, month, dayOfMonth);
 
-//                dyear = year;
-//                dmonth = month+1;
-//                ddayofmonth = dayOfMonth;
+                refresh();
+
+                dyear = year;
+                dmonth = month+1;
+                ddayofmonth = dayOfMonth;
 
                 Dpicker.setVisibility(View.INVISIBLE);
                 listresult.setVisibility(View.VISIBLE);
@@ -193,6 +252,7 @@ public class ResultFragment extends Fragment {
                 dmonth = c.get(Calendar.MONTH)+1;
                 ddayofmonth = c.get(Calendar.DAY_OF_MONTH);
                 txtDate.setText(dyear + "-" + (dmonth) + "-" + ddayofmonth);
+                refresh();
             }
         });
 
@@ -204,6 +264,7 @@ public class ResultFragment extends Fragment {
                 dmonth = c.get(Calendar.MONTH)+1;
                 ddayofmonth = c.get(Calendar.DAY_OF_MONTH);
                 txtDate.setText(dyear + "-" + (dmonth) + "-" + ddayofmonth);
+                refresh();
             }
         });
 
@@ -227,6 +288,11 @@ public class ResultFragment extends Fragment {
         int curid = item.getItemId();
 
         switch (curid){
+            case R.id.nav_refresh:
+                Log.i(this.getClass().getName(), "새로고침 클릭");
+                refresh();
+                break;
+
             case R.id.nav_textchart:
                 //텍스트로 보기 클릭시
                 Log.i(this.getClass().getName(), "텍스트로 보기 클릭");
@@ -328,6 +394,11 @@ public class ResultFragment extends Fragment {
         }
     }
 
-
+    public void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this);
+        ft.attach(this);
+        ft.commit();
+    }
 
 }
