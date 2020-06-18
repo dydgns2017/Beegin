@@ -156,6 +156,7 @@ public class HomeFragment extends Fragment {
                 }
 
                 myDBHelper.insert(db , posterText[index], startTime, endTime, timeGap);
+                db.close();
 
 
 
@@ -353,13 +354,6 @@ public class HomeFragment extends Fragment {
 
         }
     }
-
-
-
-
-
-
-
 
 
 }

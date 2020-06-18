@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         //DB생성을 위한 코드 WY : 06-16 추가
         myDBHelper = new myDBHelper(this);
                db = myDBHelper.getWritableDatabase();
+//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('여가활동', '2020/06/17 11:22:00', '2020/06/17 12:00:00', '0:38:0' )");
+//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('인터넷', '2020/06/16 11:22:00', '2020/06/16 12:00:00', '0:38:0' )");
+//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('여가활동', '2020/06/05 11:22:00', '2020/06/05 12:00:00', '0:38:0' )");
+
 
         db.close();
 
@@ -261,4 +265,5 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
 
     }*/
+
 }
