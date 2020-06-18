@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.GridView;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.sungkyul.aa.MainActivity;
@@ -36,6 +38,7 @@ import com.sungkyul.aa.myDBHelper;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AddPlanActivity extends Activity {
@@ -44,6 +47,7 @@ public class AddPlanActivity extends Activity {
     RadioButton rdoActivity, rdoTime;
     GridView plan_grid;
 
+    CalendarView calView;
     TimePicker timePicker;
     Button btnaddPlan;
     EditText edt_add_name;
@@ -67,22 +71,14 @@ public class AddPlanActivity extends Activity {
     int i=0;
     int length;
 
-    int nHourDay;
-    int nMinute;
-
-    public void onTimeChanged(TimePicker timePicker,
-                              int hourOfDay, int minute) {
-        nHourDay = hourOfDay;
-        nMinute = minute;
-    }
-
-
-
+    String nHourDay;
+    String nMinute;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addplan);
+
 
         mainImage = (ImageView)findViewById(R.id.mainImage);
         myDBHelper = new myDBHelper(this);
@@ -125,21 +121,18 @@ public class AddPlanActivity extends Activity {
         timePicker.setVisibility(View.INVISIBLE);
         plan_grid.setVisibility(View.INVISIBLE);
 
-//        public void plan_insert(SQLiteDatabase db, String planname , String activityName, Integer img_src, String timegoal){
         btnaddPlan = (Button)findViewById(R.id.btnAddAddPlan);
         btnaddPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 //////////////////////////////////////////////////////////////////////// insert 문 추가할 것.
-
-
                 myDBHelper = new myDBHelper(getApplicationContext());
                 db = myDBHelper.getWritableDatabase();
 
-                Log.i(this.getClass().getName(),"플랜 입력값 -> "+ "" + edt_add_name.getText().toString()
-                        + "" + posterText[index] + "" +  posterID[index] + "" + nHourDay + ":" + nMinute);
 
+                Log.i(this.getClass().getName(),"플랜 입력값 -> "+ "" + edt_add_name.getText().toString()
+                        + "" + posterText[index] + "--" +  posterID[index] + "--" + timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute());
 //                myDBHelper.plan_insert(db, edt_add_name.getText().toString(), posterText[index], posterID[index], timePicker.get );
 
 
@@ -211,5 +204,7 @@ public class AddPlanActivity extends Activity {
             return convertView;
 
         }
-    }
+}
+
+
 }
