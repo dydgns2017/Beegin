@@ -47,6 +47,7 @@ public class AddPlanActivity extends Activity {
     TimePicker timePicker;
     Button btnaddPlan;
     EditText edt_add_name;
+    ImageView mainImage;
 
     public static myDBHelper myDBHelper;
     public static SQLiteDatabase db;
@@ -71,6 +72,7 @@ public class AddPlanActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addplan);
 
+        mainImage = (ImageView)findViewById(R.id.mainImage);
         myDBHelper = new myDBHelper(this);
         db = myDBHelper.getReadableDatabase();
         Cursor cursor;
@@ -117,7 +119,9 @@ public class AddPlanActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                //////////////////////////////////////////////////////////////////////// insert 문 추가할 것.
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -158,6 +162,8 @@ public class AddPlanActivity extends Activity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
+
+            int posi = position;
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.gridview_list, parent, false);
 
@@ -167,6 +173,16 @@ public class AddPlanActivity extends Activity {
 
             imageView.setImageBitmap(picArr.get(position));
             textView.setText(textArr.get(position));
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                  Toast.makeText(getApplicationContext(), position + "", Toast.LENGTH_LONG).show();
+                    mainImage.setImageResource(posterID[position]);
+
+
+                        }
+                    });
 
 
             return convertView;

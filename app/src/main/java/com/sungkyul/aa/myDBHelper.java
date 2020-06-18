@@ -39,6 +39,16 @@ public class myDBHelper extends SQLiteOpenHelper {
                 "timedata TEXT );");
 
 
+        // user_plan 생성
+        db.execSQL("CREATE TABLE user_plan ( " +
+                "pk INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                "activityname TEXT NOT NULL, " +
+                "timestart TEXT, " +
+                "timeend TEXT, " +
+                "timedata TEXT );");
+
+
+
         for(int i=0; i<posterID.length; i++){
             db.execSQL("INSERT INTO user_activity(activityname, img_src) VALUES ('" + posterText[i] + "', '" + posterID[i] + "');");
         }
