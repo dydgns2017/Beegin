@@ -143,6 +143,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
+        android:padding="20dp"
         app:srcCompat="@drawable/no"
         android:layout_marginRight="30dp"
         />

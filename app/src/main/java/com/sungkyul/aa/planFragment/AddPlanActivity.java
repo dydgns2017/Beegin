@@ -61,9 +61,21 @@ public class AddPlanActivity extends Activity {
     Integer posterID[] = new Integer[30];
     String posterText[] = new String[30];
 
+    int index;
+
     // 현재 데이터 개수 -1
     int i=0;
     int length;
+
+    int nHourDay;
+    int nMinute;
+
+    public void onTimeChanged(TimePicker timePicker,
+                              int hourOfDay, int minute) {
+        nHourDay = hourOfDay;
+        nMinute = minute;
+    }
+
 
 
 
@@ -113,13 +125,24 @@ public class AddPlanActivity extends Activity {
         timePicker.setVisibility(View.INVISIBLE);
         plan_grid.setVisibility(View.INVISIBLE);
 
-
+//        public void plan_insert(SQLiteDatabase db, String planname , String activityName, Integer img_src, String timegoal){
         btnaddPlan = (Button)findViewById(R.id.btnAddAddPlan);
         btnaddPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 //////////////////////////////////////////////////////////////////////// insert 문 추가할 것.
+
+
+                myDBHelper = new myDBHelper(getApplicationContext());
+                db = myDBHelper.getWritableDatabase();
+
+                Log.i(this.getClass().getName(),"플랜 입력값 -> "+ "" + edt_add_name.getText().toString()
+                        + "" + posterText[index] + "" +  posterID[index] + "" + nHourDay + ":" + nMinute);
+
+//                myDBHelper.plan_insert(db, edt_add_name.getText().toString(), posterText[index], posterID[index], timePicker.get );
+
+
                 startActivity(intent);
                 finish();
             }
@@ -163,7 +186,6 @@ public class AddPlanActivity extends Activity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
 
-            int posi = position;
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.gridview_list, parent, false);
 
@@ -179,6 +201,7 @@ public class AddPlanActivity extends Activity {
                 public void onClick(View v) {
                   Toast.makeText(getApplicationContext(), position + "", Toast.LENGTH_LONG).show();
                     mainImage.setImageResource(posterID[position]);
+                    index = position;
 
 
                         }
