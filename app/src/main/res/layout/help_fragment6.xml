@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/help01"
+        android:src="@drawable/help06"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_margin="50dp"
@@ -23,7 +23,7 @@
         android:layout_marginRight="20dp"
         android:textSize="35dp"
         android:gravity="center"
-        android:text="쉽게 기록하기"
+        android:text="목표 설정하기"
         android:textColor="#FFFFFFFF"
         />
 
@@ -35,7 +35,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:textColor="#FFFFFFFF"
-        android:text="활동 아이콘을 탭해 활동을 기록합니다. \n일을 끝마쳤으면 정지를 탭하세요. \n 오른쪽 하단의 + 버튼을 통해 활동을 추가 할 수있습니다. \n활동은 최대 30개까지 생성할 수 있습니다."
+        android:text="하단의 +버튼으로 목표를 생성하고 달성하세요. \n목표에 도달하면 앱을 통해 알려줍니다. \n목표를 달성한 후 완료 버튼을 누르면 해당 목표가 사라집니다."
         />
 
 </LinearLayout>

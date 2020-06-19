@@ -13,6 +13,10 @@ import com.github.paolorotolo.appintro.AppIntro;
 import com.sungkyul.aa.Fragment.SetFragment;
 import com.sungkyul.aa.HelpFragment.HFragment1;
 import com.sungkyul.aa.HelpFragment.HFragment2;
+import com.sungkyul.aa.HelpFragment.HFragment3;
+import com.sungkyul.aa.HelpFragment.HFragment4;
+import com.sungkyul.aa.HelpFragment.HFragment5;
+import com.sungkyul.aa.HelpFragment.HFragment6;
 import com.sungkyul.aa.MainActivity;
 
 
@@ -20,6 +24,11 @@ public class HelpActivity extends AppIntro {
 
     Fragment hfragment1 = new HFragment1();
     Fragment hfragment2 = new HFragment2();
+    Fragment hfragment3 = new HFragment3();
+    Fragment hfragment4 = new HFragment4();
+    Fragment hfragment5 = new HFragment5();
+    Fragment hfragment6 = new HFragment6();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +42,11 @@ public class HelpActivity extends AppIntro {
 
         addSlide(hfragment1);
         addSlide(hfragment2);
+        addSlide(hfragment3);
+        addSlide(hfragment4);
+        addSlide(hfragment5);
+        addSlide(hfragment6);
+
     }
 
     @Override

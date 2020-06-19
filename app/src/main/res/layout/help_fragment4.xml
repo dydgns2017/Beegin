@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/help01"
+        android:src="@drawable/help04"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_margin="50dp"
@@ -23,7 +23,7 @@
         android:layout_marginRight="20dp"
         android:textSize="35dp"
         android:gravity="center"
-        android:text="쉽게 기록하기"
+        android:text="원형 차트로 보기"
         android:textColor="#FFFFFFFF"
         />
 
@@ -35,7 +35,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:textColor="#FFFFFFFF"
-        android:text="활동 아이콘을 탭해 활동을 기록합니다. \n일을 끝마쳤으면 정지를 탭하세요. \n 오른쪽 하단의 + 버튼을 통해 활동을 추가 할 수있습니다. \n활동은 최대 30개까지 생성할 수 있습니다."
+        android:text="날짜를 선택한 후 메뉴를 통해서 원형그래프로 보기를 클릭합니다. 선택한 날짜를 분석해 원형 그래프로 하루의 기록한 활동을 알 수 있습니다."
         />
 
 </LinearLayout>
