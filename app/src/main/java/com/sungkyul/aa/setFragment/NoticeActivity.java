@@ -13,11 +13,14 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.sungkyul.aa.MainActivity;
 import com.sungkyul.aa.R;
 
 public class NoticeActivity extends Activity {
 
     private View header;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,9 +48,11 @@ public class NoticeActivity extends Activity {
         listnotice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(getApplicationContext(),
+//                        notice[position] +"이 클릭되었습니다." +  position, Toast.LENGTH_SHORT).show();
+                //숫자뺀게 밑에꺼 위에껀 안뺀거
                 Toast.makeText(getApplicationContext(),
-                        notice[position] +"이 클릭되었습니다." +  position, Toast.LENGTH_SHORT).show();
-
+                        notice[position] +"이 클릭되었습니다.", Toast.LENGTH_SHORT).show();
                 switch (position) {
 
                     case 0 :

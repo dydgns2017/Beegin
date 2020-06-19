@@ -5,6 +5,17 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="공지 사항"
+        android:textStyle="bold"
+        android:background="@color/colorBlue"
+        android:gravity="center_horizontal"
+        android:textColor="#FFFFFF"
+        />
+
     <ListView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
