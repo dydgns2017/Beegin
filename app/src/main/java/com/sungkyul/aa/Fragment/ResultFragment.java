@@ -7,10 +7,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -60,8 +62,8 @@ public class ResultFragment extends Fragment {
     PieChart pieChart;
     //funChart
     LinearLayout Linerfun;
-    ImageView resultIMG;
     TextView txtDay, txtHour, txtMinute, txtWage, txtCurry, txtSing, txtPcRoom;
+    TextView txtActivityname;
     //DB
     public static com.sungkyul.aa.myDBHelper myDBHelper;
     public static SQLiteDatabase db;
@@ -70,6 +72,7 @@ public class ResultFragment extends Fragment {
     int dyear = c.get(Calendar.YEAR);
     int dmonth = c.get(Calendar.MONTH)+1;
     int ddayofmonth = c.get(Calendar.DAY_OF_MONTH);
+    static String[] stractname = new String[31];
 
 
 
@@ -94,7 +97,6 @@ public class ResultFragment extends Fragment {
         pieChart = (PieChart)rootview.findViewById(R.id.pieChart);
         Linerfun = (LinearLayout)rootview.findViewById(R.id.Linerfun);
 
-        resultIMG = (ImageView)rootview.findViewById(R.id.resultImg);
         txtDay = (TextView)rootview.findViewById(R.id.txtDay);
         txtHour = (TextView)rootview.findViewById(R.id.txtHour);
         txtMinute = (TextView)rootview.findViewById(R.id.txtMinute);
@@ -102,8 +104,10 @@ public class ResultFragment extends Fragment {
         txtCurry = (TextView)rootview.findViewById(R.id.txtCurry);
         txtSing = (TextView)rootview.findViewById(R.id.txtSing);
         txtPcRoom = (TextView)rootview.findViewById(R.id.txtPCRoom);
+        txtActivityname = (TextView)rootview.findViewById(R.id.txtActvityname);
 
-
+        //뷰에 컨텍스트 메뉴 등록
+        registerForContextMenu(txtActivityname);
         //리스트뷰 연결
         final ResultAdapter adapter = new ResultAdapter();
         myDBHelper = new myDBHelper(getActivity());
@@ -150,10 +154,14 @@ public class ResultFragment extends Fragment {
             if(Integer.parseInt(timeMinute) < 10) timeMinute = "0" + timeMinute;
             timedata = timeHour + " : " + timeMinute;
 
+
+            //이미지 리소스를 가져오기위한 쿼리문
             getImgsrc = "Select * FROM user_activity WHERE activityname = " + "'" +activityname +"'";
+            Log.i(this.getClass().getName() , "getImgsr --> " + getImgsrc );
             Cursor cursor1 = db.rawQuery(getImgsrc,null);
             cursor1.moveToNext();
             resource = cursor1.getInt(2);
+
 
 
             // 파이차트를 쓰기위해
@@ -163,11 +171,6 @@ public class ResultFragment extends Fragment {
         }
 //        db.close();
 
-//        adapter.addItem(new ResultItem("청소", "07:30", "07:50", "50분", R.drawable.mov01));
-//        adapter.addItem(new ResultItem("공부", "08:30", "10:00", "90분", R.drawable.mov02));
-//        adapter.addItem(new ResultItem("식사", "10:10", "10:40", "30분", R.drawable.mov03));
-//        adapter.addItem(new ResultItem("운동", "11:00", "12:30", "90분", R.drawable.mov04));
-//        adapter.addItem(new ResultItem("휴식", "12:30", "13:00", "30분", R.drawable.mov05));
         //어댑터 연결
         listresult.setAdapter(adapter);
 
@@ -316,43 +319,182 @@ public class ResultFragment extends Fragment {
             }
         });
 
-        //Funchart--Code
+        db.close();
+        return rootview;
+    }
 
-        final int[] imgResource = {R.drawable.icon01, R.drawable.icon02,  R.drawable.icon03, R.drawable.icon04, R.drawable.icon05, R.drawable.icon06, R.drawable.icon07,
-                R.drawable.icon08, R.drawable.icon09, R.drawable.icon10, R.drawable.icon11, R.drawable.icon12};
+    //Funchart하기위한 Code
+    @Override
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
+        int count = 0;
+        String query = "Select * FROM user_activity ";
+        Log.i(this.getClass().getName(), "query ==> " + query);
+        db = myDBHelper.getWritableDatabase();
 
-        resultIMG.setImageResource(imgResource[8]);
-        int img_src = imgResource[8];
-        Log.i(this.getClass().getName(), "img_src --> " + img_src);
 
-        //이미지의 맞는 이름을 같고오기 위한 쿼리
+        Cursor funcursor = db.rawQuery(query, null);
+        while (funcursor.moveToNext()){
+            count++;
+            stractname[count] = funcursor.getString(1); //활동명
+            menu.add(0,count,100,stractname[count]);
+        }
 
+        db.close();
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
 
-        String selectImgAll = "Select * FROM user_activity WHERE img_src = '" + img_src +"'";
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
 
-        String activityname = "";
-        Log.i(this.getClass().getName(), "설렉트문!! --> " + selectImgAll);
-        Log.i(this.getClass().getName(), "이미지 리소스1!! --> " + imgResource[8]);
+        switch (item.getItemId())
+        {
+            case 1 :
+                txtActivityname.setText(stractname[1]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 2 :
+                txtActivityname.setText(stractname[2]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 3 :
+                txtActivityname.setText(stractname[3]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 4 :
+                txtActivityname.setText(stractname[4]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 5 :
+                txtActivityname.setText(stractname[5]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 6 :
+                txtActivityname.setText(stractname[6]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 7 :
+                txtActivityname.setText(stractname[7]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 8 :
+                txtActivityname.setText(stractname[8]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 9 :
+                txtActivityname.setText(stractname[9]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 10 :
+                txtActivityname.setText(stractname[10]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 11 :
+                txtActivityname.setText(stractname[11]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 12 :
+                txtActivityname.setText(stractname[12]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 13 :
+                txtActivityname.setText(stractname[13]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 14 :
+                txtActivityname.setText(stractname[14]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 15 :
+                txtActivityname.setText(stractname[15]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 16 :
+                txtActivityname.setText(stractname[16]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 17 :
+                txtActivityname.setText(stractname[17]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 18 :
+                txtActivityname.setText(stractname[18]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 19 :
+                txtActivityname.setText(stractname[19]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 20 :
+                txtActivityname.setText(stractname[20]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 21 :
+                txtActivityname.setText(stractname[21]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 22 :
+                txtActivityname.setText(stractname[22]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 23 :
+                txtActivityname.setText(stractname[23]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 24:
+                txtActivityname.setText(stractname[24]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 25 :
+                txtActivityname.setText(stractname[25]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 26 :
+                txtActivityname.setText(stractname[26]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 27 :
+                txtActivityname.setText(stractname[27]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 28 :
+                txtActivityname.setText(stractname[28]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 29 :
+                txtActivityname.setText(stractname[29]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            case 30 :
+                txtActivityname.setText(stractname[30]);
+                makefunchart(txtActivityname.getText()+"");
+                break;
+            default:
+                break;
 
-        Cursor cursor2 = db.rawQuery(selectImgAll,null);
-        cursor2.moveToNext();
-        activityname = cursor2.getString(1);
+        }
 
+        return super.onContextItemSelected(item);
+    }
+
+    //funchart만들기함수
+    public void makefunchart(String activityname){
         //모든 행동을 가져오기 위한 코드
-        String selectdata = "Select * FROM time_db WHERE activityname = '" + activityname + "'";
-        cursor2 = db.rawQuery(selectdata,null);
         int total_second = 0;
+        String query = "Select * FROM time_db WHERE activityname = '" + activityname + "'";
+        Log.i(this.getClass().getName(), "query ==> " + query);
+        db = myDBHelper.getWritableDatabase();
 
-        while (cursor2.moveToNext()){
-            String timedata = cursor2.getString(4);
+        Cursor funcursor = db.rawQuery(query, null);
+
+        while (funcursor.moveToNext()){
+            String timedata = funcursor.getString(4);
             String timedata1 = timedata.split(":")[0];
             String timedata2 = timedata.split(":")[1];
             String timedata3 = timedata.split(":")[2];
             total_second += Integer.parseInt(timedata1)*3600+
-                            Integer.parseInt(timedata2)*60+
-                            Integer.parseInt(timedata3);
+                    Integer.parseInt(timedata2)*60+
+                    Integer.parseInt(timedata3);
         }
-        Log.i(this.getClass().getName(), "total_second ==> " + total_second);
 
         //계산해서 값넣어주기
         txtDay.setText(total_second / 86400 +"일");
@@ -365,9 +507,8 @@ public class ResultFragment extends Fragment {
 
 
         db.close();
-        return rootview;
-    }
 
+    }
 
     //메뉴바 만들기
     @Override
@@ -376,6 +517,11 @@ public class ResultFragment extends Fragment {
         inflater.inflate(R.menu.menu_result,menu);
 
     }
+
+
+
+
+
     //메뉴액션
 
 
