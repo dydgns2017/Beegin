@@ -15,20 +15,14 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:stretchColumns="1">
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="225dp"
-                android:layout_height="159dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/login_back" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="WELCOME to the Beegin"
+                android:textSize="40dp"
+                android:text="Beegin"
+                android:textAlignment="center"
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:layout_marginTop="-10dp"/>
@@ -36,6 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:text="SignUp to start your use Beegin"/>
 
             <LinearLayout
@@ -75,7 +70,7 @@
                         android:id="@+id/edtUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint=" Last Name"
+                        android:hint=" Username"
                         android:inputType="text">
 
                     </EditText>
@@ -146,7 +141,7 @@
                     android:layout_gravity="center_horizontal"
                     android:textSize="15dp"
                     android:ems="10"
-                    android:text="Go" />
+                    android:text="Sign up" />
 
 
 

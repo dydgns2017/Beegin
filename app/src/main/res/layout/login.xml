@@ -5,31 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="225dp"
-        android:layout_height="159dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/login_back" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-10dp"
-        android:text="WELCOME to the Beegin"
+        android:text="Beegin"
         android:textColor="#000"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please enter your ID and password."/>
+        android:text="Please enter your ID and password."
+        android:layout_gravity="center"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,7 +44,7 @@
                 android:id="@+id/id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=" UserName"
+                android:hint=" Username"
                 android:inputType="text">
 
             </EditText>
@@ -73,16 +69,6 @@
 
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forget Password?"
-            android:layout_gravity="right"
-            android:background="#00000000"
-            />
-
-
-
-        <Button
             android:id="@+id/btnlogin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -92,9 +78,9 @@
             android:textColor="#fff"
             android:layout_gravity="center_horizontal"
             android:textSize="15dp"
+            android:layout_marginVertical="25dp"
             android:ems="10"
             android:text="Login" />
-
 
         <Button
             android:layout_width="wrap_content"
