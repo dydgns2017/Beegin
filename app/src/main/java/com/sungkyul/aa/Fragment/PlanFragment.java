@@ -75,7 +75,7 @@ public class PlanFragment extends Fragment {
            String timeGoal = cursor.getString(3);
            String StartTime = cursor.getString(4);
            String currentTime = TP.Timeprcess(getActivity(), activityName, StartTime);
-           double progress = Integer.parseInt(currentTime)/Integer.parseInt(timeGoal);
+           double progress = Integer.parseInt(currentTime)*100/Integer.parseInt(timeGoal);
            int int_progress = (int)progress;
 
             Log.i(this.getClass().getName(), "currentTime ==>" + Integer.parseInt(currentTime)  + "   TimeGoal ==>" + Integer.parseInt(timeGoal) +

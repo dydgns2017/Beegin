@@ -42,12 +42,17 @@ public class TimeProcesser {
         myDBHelper = new myDBHelper(context);
         db = myDBHelper.getReadableDatabase();
         Cursor cursor;
-        cursor = db.rawQuery("SELECT timedata FROM time_db WHERE activityname = + '" + activityName + "' ;", null);
+        cursor = db.rawQuery("SELECT timestart,timedata FROM time_db WHERE activityname = + '" + activityName + "' ;", null);
 
         while(cursor.moveToNext()){
 
-            String timeStr[] = (cursor.getString(0)).split(":");
-            minuteTime += (Integer.parseInt(timeStr[0])*60) + Integer.parseInt(timeStr[1]);
+            String timestart = (cursor.getString(0));
+
+            int compare = date.compareTo( timestart );
+            if(compare < 0) {
+                String timeStr[] = (cursor.getString(1)).split(":");
+                minuteTime += (Integer.parseInt(timeStr[0]) * 60) + Integer.parseInt(timeStr[1]);
+            }
         }
         return minuteTime+"";
         // 분의 형태로 Return 해야함.

@@ -83,7 +83,7 @@ public class ListViewAdapter extends BaseAdapter {
         }else{
             SStartMinute = StartTimeDate + "";
         }
-        currentTime.setText("current : " + SStartHour + "시" + SStartMinute + "분");
+        currentTime.setText("progress : " + SStartHour + "시" + SStartMinute + "분");
 
         String SGoalHour;
         String SGoalMinute;
