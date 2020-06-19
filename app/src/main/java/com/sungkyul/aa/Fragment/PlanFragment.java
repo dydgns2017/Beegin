@@ -13,7 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sungkyul.aa.R;
@@ -38,7 +40,7 @@ public class PlanFragment extends Fragment {
 
     TimeProcesser TP = new TimeProcesser();
     FloatingActionButton btnAddplan;
-
+    Button btnCompletion;
     public PlanFragment() {
         // Required empty public constructor
     }
@@ -49,8 +51,13 @@ public class PlanFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_plan, null);
 
+        myDBHelper = new myDBHelper(getActivity());
+        db = myDBHelper.getReadableDatabase();
+
+
+
         ListView listview ;
-        ListViewAdapter adapter = new ListViewAdapter();
+        ListViewAdapter adapter = new ListViewAdapter(getActivity());
         btnAddplan = (FloatingActionButton) view.findViewById(R.id.btnAddplan);
         btnAddplan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +69,6 @@ public class PlanFragment extends Fragment {
         // 리스트뷰 참조 및 Adapter달기
         listview = (ListView) view.findViewById(R.id.listview1);
 
-        myDBHelper = new myDBHelper(getActivity());
-        db = myDBHelper.getReadableDatabase();
         Cursor cursor;
         cursor = db.rawQuery("SELECT planname, activityname, img_src, timegoal, currenttime FROM user_plan;", null);
 

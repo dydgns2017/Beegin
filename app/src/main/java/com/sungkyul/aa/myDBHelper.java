@@ -62,7 +62,7 @@ public class myDBHelper extends SQLiteOpenHelper {
 
 
     public void plan_delete(SQLiteDatabase db, String planname){
-        db.execSQL("DELETE FROM user_plan WHERE activityname = '" +  planname + "';");
+        db.execSQL("DELETE FROM user_plan WHERE planname = '" +  planname + "';");
     }
 
 
