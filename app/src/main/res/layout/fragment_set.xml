@@ -195,20 +195,36 @@
         android:id="@+id/LinerLogout"
         android:layout_marginTop="5dp">
 
-    <ImageView
-        android:layout_height="48dp"
-        android:layout_width="48dp"
-        android:padding="5dp"
-        android:src="@drawable/logout"/>
+<!--    <ImageView-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_width="48dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:src="@drawable/logout"/>-->
 
-    <TextView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:text=" 로그아웃"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:gravity=""
-        android:textSize="25dp"/>
+<!--    <TextView-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:text=" 로그아웃"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:gravity=""-->
+<!--        android:textSize="25dp"/>-->
+        <ImageView
+            android:id="@+id/fragmentSetLoginImageView"
+            android:layout_height="48dp"
+            android:layout_width="48dp"
+            android:padding="5dp"
+            android:src="@drawable/login"/>
+
+        <TextView
+            android:id="@+id/fragmentSetloginText"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text=" 로그인"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity=""
+            android:textSize="25dp"/>
 
     </LinearLayout>
         <View
