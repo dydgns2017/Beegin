@@ -30,10 +30,6 @@ import com.sungkyul.aa.myDBHelper;
 import java.util.ArrayList;
 
 public class AddContentActivity extends Activity {
-
-    public static myDBHelper myDBHelper;
-    public static SQLiteDatabase db;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

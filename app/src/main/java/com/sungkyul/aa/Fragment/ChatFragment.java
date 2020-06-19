@@ -22,7 +22,6 @@ import com.sungkyul.aa.chatFragment.AddContentActivity;
 // 게시판으로 사용될 클래스입니다.
 public class ChatFragment extends Fragment {
     View view;
-    FloatingActionButton btnAddboard;
 
     public ChatFragment() {
         // Required empty public constructor
