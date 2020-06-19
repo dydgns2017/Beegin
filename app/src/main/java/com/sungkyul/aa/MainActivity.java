@@ -14,25 +14,32 @@ package com.sungkyul.aa;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -41,6 +48,8 @@ import com.sungkyul.aa.Fragment.HomeFragment;
 import com.sungkyul.aa.Fragment.PlanFragment;
 import com.sungkyul.aa.Fragment.ResultFragment;
 import com.sungkyul.aa.Fragment.SetFragment;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private Activity activity;
     public static myDBHelper myDBHelper;
     public static SQLiteDatabase db;
+
     @Override
     public void onBackPressed() {
         // 기존 뒤로가기 버튼의 기능을 막기위해 주석처리 또는 삭제
@@ -95,11 +105,13 @@ public class MainActivity extends AppCompatActivity {
         //DB생성을 위한 코드 WY : 06-16 추가
         myDBHelper = new myDBHelper(this);
                db = myDBHelper.getWritableDatabase();
+
+
+        db = myDBHelper.getWritableDatabase();
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/01 09:00:00', '2020/06/01 12:00:00', '3:0:0' )");
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/02 09:00:00', '2020/06/02 12:00:00', '3:0:0' )");
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/03 09:00:00', '2020/06/03 11:00:00', '2:0:0' )");
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/04 09:00:00', '2020/06/04 12:00:00', '3:0:0' )");
-
         db.close();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, homeFragment).commit();
@@ -207,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_chat:
-                        setTitle("채팅");
+                        setTitle("자유 게시판");
                         mMainNav.setItemBackgroundResource(R.color.colorBlue);
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(
@@ -245,8 +257,10 @@ public class MainActivity extends AppCompatActivity {
                         if(chatFragment != null) getSupportFragmentManager().beginTransaction().hide(chatFragment).commit();
                         if(planFragment != null) getSupportFragmentManager().beginTransaction().hide(planFragment).commit();
                         if(resultFragment != null) getSupportFragmentManager().beginTransaction().hide(resultFragment).commit();
-/*                        ft.replace(R.id.main_frame, setFragment);
+/*                      ft.replace(R.id.main_frame, setFragment);
                         ft.commit();*/
+
+
                         return true;
 
                     default:

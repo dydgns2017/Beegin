@@ -2,18 +2,24 @@ package com.sungkyul.aa.Fragment;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sungkyul.aa.MainActivity;
 import com.sungkyul.aa.R;
 import com.sungkyul.aa.setFragment.HelpActivity;
 import com.sungkyul.aa.setFragment.LogoutActivity;
@@ -30,6 +36,9 @@ public class SetFragment extends Fragment {
 
     LinearLayout LinerNotice, LinerQuestion, LinerHelp, LinerSetting, LinerLogout;
     LinearLayout LinerOutputData, LinerInputData;
+    TextView fragmentTextViewLogin;
+    ImageView fragmentImageViewLogin;
+    SharedPreferences pref;
 
     public SetFragment() {
         // Required empty public constructor
@@ -41,7 +50,15 @@ public class SetFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_set, container, false);
-
+        pref = this.getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = pref.edit();
+        // 로그인 확인
+        fragmentTextViewLogin = (TextView) rootView.findViewById(R.id.fragmentSetloginText);
+        fragmentImageViewLogin = (ImageView) rootView.findViewById(R.id.fragmentSetLoginImageView);
+        if ( pref.contains("username") ){
+            fragmentTextViewLogin.setText(" 로그아웃");
+            fragmentImageViewLogin.setImageResource(R.drawable.logout);
+        }
 
         //공지사항 창
         LinerNotice = rootView.findViewById(R.id.LinerNotice);
@@ -99,17 +116,26 @@ public class SetFragment extends Fragment {
             }
         });
 
-        //로그아웃 창
+        //로그인 및 로그아웃 창
         LinerLogout = rootView.findViewById(R.id.LinerLogout);
 
         LinerLogout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Log.i(this.getClass().getName(), "LinerLogout 클릭");
+                SharedPreferences.Editor editor = pref.edit();
+                if ( !(pref.contains("username")) ){
+                    Intent intent = new Intent(getActivity().getApplication(), loginActivity.class);
+                    startActivity(intent);
+                } else {
+                    // logout
+                    Log.i(this.getClass().getName(), "로그아웃 동작");
+                    editor.remove("username").commit();
+                    editor.remove("password").commit();
+                    fragmentTextViewLogin.setText(" 로그인");
+                    fragmentImageViewLogin.setImageResource(R.drawable.login);
 
-                Intent intent = new Intent(getActivity().getApplication(), loginActivity.class);
-
-                startActivity(intent);
+                }
             }
         });
 

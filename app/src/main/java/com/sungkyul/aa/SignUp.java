@@ -57,7 +57,7 @@ public class SignUp extends Activity {
                     AlertDialog alertDialog = new AlertDialog.Builder(SignUp.this).create();
                     alertDialog.setTitle("Error");
                     alertDialog.setMessage("모든 정보를 입력해주세요.");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "확인",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
@@ -88,7 +88,7 @@ public class SignUp extends Activity {
                         AlertDialog alertDialog = new AlertDialog.Builder(SignUp.this).create();
                         alertDialog.setTitle("Error");
                         alertDialog.setMessage("패스워드를 다시 입력해주세요.");
-                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "확인",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
@@ -103,7 +103,7 @@ public class SignUp extends Activity {
                         AlertDialog alertDialog = new AlertDialog.Builder(SignUp.this).create();
                         alertDialog.setTitle("Error");
                         alertDialog.setMessage("이미 가입된 회원입니다.");
-                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "확인",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
