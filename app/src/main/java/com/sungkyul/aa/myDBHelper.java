@@ -12,7 +12,7 @@ public class myDBHelper extends SQLiteOpenHelper {
     String text ="수면 이동 식사 운동 일 쇼핑 여가활동 집안일 영화 걷기 공부 인터넷";
 
     public myDBHelper(Context context){
-        super(context, "Time", null,2 );
+        super(context, "Time", null,3 );
     }
 
     @Override

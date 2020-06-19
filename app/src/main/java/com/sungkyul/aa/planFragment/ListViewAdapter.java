@@ -66,7 +66,24 @@ public class ListViewAdapter extends BaseAdapter {
         iconImageView.setImageDrawable(listViewItem.getIcon());
         titleTextView.setText(listViewItem.getTitle());
         holder.progressBar.setProgress(listViewItem.getProgressBar());
-        currentTime.setText(listViewItem.getCurrentTime());
+
+
+        String SStartHour;
+        String SStartMinute;
+        int StartTimeDate = Integer.parseInt(listViewItem.getCurrentTime());
+        int StartHour = StartTimeDate/60;
+        if(StartHour<10){
+            SStartHour = 0 + "" + StartHour;
+        }else{
+            SStartHour = StartHour + "";
+        }
+        StartTimeDate %= 60;
+        if(StartTimeDate<10){
+            SStartMinute = 0 + "" + StartTimeDate;
+        }else{
+            SStartMinute = StartTimeDate + "";
+        }
+        currentTime.setText("current : " + SStartHour + "시" + SStartMinute + "분");
 
         String SGoalHour;
         String SGoalMinute;
@@ -83,7 +100,7 @@ public class ListViewAdapter extends BaseAdapter {
         }else{
             SGoalMinute = GoalTimeDate + "";
         }
-        GoalTime.setText(SGoalHour + "시" + SGoalMinute + "분");
+        GoalTime.setText("Goal : "+ SGoalHour + "시" + SGoalMinute + "분");
 
         return convertView;
     }
