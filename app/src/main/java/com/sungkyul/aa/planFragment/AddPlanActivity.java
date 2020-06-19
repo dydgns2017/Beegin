@@ -130,12 +130,22 @@ public class AddPlanActivity extends Activity {
                 myDBHelper = new myDBHelper(getApplicationContext());
                 db = myDBHelper.getWritableDatabase();
 
+                // 현재시간을 msec 으로 구한다.
+                long now = System.currentTimeMillis();
+                // 현재시간을 date 변수에 저장한다.
+                Date date = new Date(now);
+                // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
+                SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                // nowDate 변수에 값을 저장한다.
+                String currentTime = sdfNow.format(date);
+
 
                 Log.i(this.getClass().getName(),"플랜 입력값 -> "+ "" + edt_add_name.getText().toString()
                         + "" + posterText[index] + "--" +  posterID[index] + "--" +
-                        ((timePicker.getCurrentHour()*60) + timePicker.getCurrentMinute()) );
+                        ((timePicker.getCurrentHour()*60) + timePicker.getCurrentMinute()) + "startTime ==>" + currentTime);
+
                 myDBHelper.plan_insert(db, edt_add_name.getText().toString(), posterText[index], posterID[index],
-                        ""+((timePicker.getCurrentHour()*60) + timePicker.getCurrentMinute()) );
+                        ""+((timePicker.getCurrentHour()*60) + timePicker.getCurrentMinute()) , currentTime);
 
 
                 startActivity(intent);

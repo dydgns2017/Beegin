@@ -30,6 +30,7 @@ public class myDBHelper extends SQLiteOpenHelper {
                 "planname TEXT NOT NULL, " +
                 "activityname TEXT NOT NULL, " +
                 "img_src INTEGER, " +
+                "currenttime TEXT, " +
                 "timegoal TEXT );");
 
         // user_activity 생성
@@ -53,10 +54,10 @@ public class myDBHelper extends SQLiteOpenHelper {
 
     }
 
-    public void plan_insert(SQLiteDatabase db, String planname , String activityName, Integer img_src, String timegoal){
-        Log.i(this.getClass().getName(),planname + " - " + activityName + " - " + img_src + " - " + timegoal + " - ");
-        db.execSQL("INSERT INTO user_plan(planname ,activityname, img_src, timegoal) " +
-                "VALUES ('" + planname + "' , '" + activityName + "', '" + img_src + "' , '" + timegoal + "');");
+    public void plan_insert(SQLiteDatabase db, String planname , String activityName, Integer img_src, String timegoal, String currentTime){
+        Log.i(this.getClass().getName(),planname + " - " + activityName + " - " + img_src + " timegoal- " + timegoal + " - ");
+        db.execSQL("INSERT INTO user_plan(planname ,activityname, img_src, currenttime , timegoal) " +
+                "VALUES ('" + planname + "' , '" + activityName + "', '" + img_src + "' , '" + currentTime + "' , '" +  timegoal + "');");
     }
 
 
@@ -81,13 +82,12 @@ public class myDBHelper extends SQLiteOpenHelper {
                 + "', '" + timeEnd + "', '" + timeGap + "');");
     }
 
-
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // 버전이 업그레이드되면 기존꺼 삭제하구 db새로 생성
         db.execSQL("DROP TABLE IF EXISTS time_db");
         db.execSQL("DROP TABLE IF EXISTS user_activity");
+        db.execSQL("DROP TABLE IF EXISTS user_plan");
         onCreate(db);
     }
 }

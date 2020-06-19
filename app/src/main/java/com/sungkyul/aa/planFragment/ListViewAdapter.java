@@ -66,6 +66,24 @@ public class ListViewAdapter extends BaseAdapter {
         iconImageView.setImageDrawable(listViewItem.getIcon());
         titleTextView.setText(listViewItem.getTitle());
         holder.progressBar.setProgress(listViewItem.getProgressBar());
+        currentTime.setText(listViewItem.getCurrentTime());
+
+        String SGoalHour;
+        String SGoalMinute;
+        int GoalTimeDate = Integer.parseInt(listViewItem.getGoalTime());
+        int GoalHour = GoalTimeDate/60;
+        if(GoalHour<10){
+            SGoalHour = 0 + "" + GoalHour;
+        }else{
+            SGoalHour = GoalHour + "";
+        }
+        GoalTimeDate %= 60;
+        if(GoalTimeDate<10){
+            SGoalMinute = 0 + "" + GoalTimeDate;
+        }else{
+            SGoalMinute = GoalTimeDate + "";
+        }
+        GoalTime.setText(SGoalHour + "시" + SGoalMinute + "분");
 
         return convertView;
     }
