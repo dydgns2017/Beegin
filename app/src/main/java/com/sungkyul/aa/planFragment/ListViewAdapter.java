@@ -13,8 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sungkyul.aa.Fragment.PlanFragment;
 import com.sungkyul.aa.R;
 import com.sungkyul.aa.myDBHelper;
 
@@ -26,6 +29,7 @@ public class ListViewAdapter extends BaseAdapter {
     public static myDBHelper myDBHelper;
     public static SQLiteDatabase db;
     Context context;
+
     // ListViewAdapter의 생성자
     public ListViewAdapter(Context context) {
         this.context = context;
@@ -44,6 +48,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         myDBHelper = new myDBHelper(context);
         db = myDBHelper.getReadableDatabase();
+
 
         final int pos = position;
         final Context context = parent.getContext();
@@ -162,4 +167,5 @@ public class ListViewAdapter extends BaseAdapter {
     class ViewHolder{
         ProgressBar progressBar;
     }
+
 }

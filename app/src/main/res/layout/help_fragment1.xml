@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#82B1FF"
+    >
+
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/icon01"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_margin="50dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="35dp"
+        android:gravity="center"
+        android:text="쉽게 기록하기"
+        android:textColor="#FFFFFFFF"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:textColor="#FFFFFFFF"
+        android:text="활동 아이콘을 탭해 클릭해 활동을 기록합니다. 일을 끝마쳤으면 활동 취소를 클릭 해 주세요."
+        />
+
+</LinearLayout>
