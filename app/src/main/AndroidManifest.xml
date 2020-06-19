@@ -25,14 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".setFragment.NoticeActivity"/>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".loginActivity" />
         <activity android:name=".planFragment.AddPlanActivity" />
         <activity android:name=".chatFragment.AddContentActivity"/>
         <activity android:name=".SignUp" />
-        <activity
-            android:name=".setFragment.NoticeActivity"
-            android:label="Notice 액티비티" />
         <activity
             android:name=".setFragment.HelpActivity"
             android:label="Help 액티비티" />

@@ -61,7 +61,10 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="계획명을 입력해 주세요."
+                    android:drawableTint="@color/colorBlue"
                     android:id="@+id/edt_plan_add_name"
+                    android:backgroundTint="@color/colorBlue"
                     />
 
             </LinearLayout>

@@ -10,6 +10,11 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
 
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+
+
+
         <!-- 타이틀바 -->
         <item name="colorPrimary">#87cefa</item>
 
@@ -18,7 +23,6 @@
         <item name="colorAccent">#87cefa</item>
 
 
-        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="SplashThme" parent="@android:style/Theme.Light.NoTitleBar">

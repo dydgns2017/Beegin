@@ -13,5 +13,7 @@ public class SettingActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting);
+
+        setTitle("설정");
     }
 }

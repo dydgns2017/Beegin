@@ -110,6 +110,7 @@ public class HomeFragment extends Fragment {
         db = myDBHelper.getReadableDatabase();
         Cursor cursor;
         cursor = db.rawQuery("SELECT activityname, img_src FROM user_activity;", null);
+        i=0;
 
         while(cursor.moveToNext()){
             posterText[i] = cursor.getString(0);

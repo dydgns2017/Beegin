@@ -18,6 +18,7 @@ public class QuestionActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question);
+        setTitle("질문과 답변");
 
         btnSubmit = (Button)findViewById(R.id.btnSubmit);
 

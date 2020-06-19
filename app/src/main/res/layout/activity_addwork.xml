@@ -58,6 +58,7 @@
                 android:hint="내용을 입력하세요."
                 android:id="@+id/edtName"
                 android:layout_width="match_parent"
+                android:drawableTint="@color/colorBlue"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal"/>
