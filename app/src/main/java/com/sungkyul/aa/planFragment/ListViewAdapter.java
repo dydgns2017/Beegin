@@ -1,28 +1,34 @@
 package com.sungkyul.aa.planFragment;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sungkyul.aa.R;
+import com.sungkyul.aa.myDBHelper;
 
 import java.util.ArrayList;
 
 public class ListViewAdapter extends BaseAdapter {
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>() ;
-
+    public static myDBHelper myDBHelper;
+    public static SQLiteDatabase db;
+    Context context;
     // ListViewAdapter의 생성자
-    public ListViewAdapter() {
-
+    public ListViewAdapter(Context context) {
+        this.context = context;
     }
 
     // Adapter에 사용되는 데이터의 개수를 리턴. : 필수 구현
@@ -34,6 +40,10 @@ public class ListViewAdapter extends BaseAdapter {
     // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴. : 필수 구현
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
+        myDBHelper = new myDBHelper(context);
+        db = myDBHelper.getReadableDatabase();
 
         final int pos = position;
         final Context context = parent.getContext();
@@ -59,14 +69,67 @@ public class ListViewAdapter extends BaseAdapter {
         TextView currentTime = (TextView)convertView.findViewById(R.id.plan_txt_nowTime);
         TextView GoalTime = (TextView)convertView.findViewById(R.id.plan_txt_GoalTime);
 
+
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        ListViewItem listViewItem = listViewItemList.get(position);
+        final ListViewItem listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         iconImageView.setImageDrawable(listViewItem.getIcon());
         titleTextView.setText(listViewItem.getTitle());
         holder.progressBar.setProgress(listViewItem.getProgressBar());
 
+
+
+        Button btnCompletion = (Button)convertView.findViewById(R.id.btnCompletion);
+        btnCompletion.setVisibility(View.INVISIBLE);
+
+        btnCompletion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDBHelper.plan_delete(db, listViewItem.getTitle() );
+            }
+        });
+
+
+
+        String SStartHour;
+        String SStartMinute;
+        int StartTimeDate = Integer.parseInt(listViewItem.getCurrentTime());
+        int StartHour = StartTimeDate/60;
+        if(StartHour<10){
+            SStartHour = 0 + "" + StartHour;
+        }else{
+            SStartHour = StartHour + "";
+        }
+        StartTimeDate %= 60;
+        if(StartTimeDate<10){
+            SStartMinute = 0 + "" + StartTimeDate;
+        }else{
+            SStartMinute = StartTimeDate + "";
+        }
+        currentTime.setText("progress : " + SStartHour + "시" + SStartMinute + "분");
+
+        String SGoalHour;
+        String SGoalMinute;
+        int GoalTimeDate = Integer.parseInt(listViewItem.getGoalTime());
+        int GoalHour = GoalTimeDate/60;
+        if(GoalHour<10){
+            SGoalHour = 0 + "" + GoalHour;
+        }else{
+            SGoalHour = GoalHour + "";
+        }
+        GoalTimeDate %= 60;
+        if(GoalTimeDate<10){
+            SGoalMinute = 0 + "" + GoalTimeDate;
+        }else{
+            SGoalMinute = GoalTimeDate + "";
+        }
+        GoalTime.setText("Goal : "+ SGoalHour + "시" + SGoalMinute + "분");
+
+
+        if(listViewItem.getProgressBar() >= 100){
+            btnCompletion.setVisibility(View.VISIBLE);
+        }
         return convertView;
     }
 
