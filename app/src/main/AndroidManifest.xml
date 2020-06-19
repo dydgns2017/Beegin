@@ -28,6 +28,7 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".loginActivity" />
         <activity android:name=".planFragment.AddPlanActivity" />
+        <activity android:name=".chatFragment.AddContentActivity"/>
         <activity android:name=".SignUp" />
         <activity
             android:name=".setFragment.NoticeActivity"
