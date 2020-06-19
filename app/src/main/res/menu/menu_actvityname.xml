@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_sleep"
+        android:title="수면"
+        android:orderInCategory="1"
+        />
+
+    <item
+        android:id="@+id/item_move"
+        android:title="이동"
+        android:orderInCategory="1"
+
+        />
+
+    <item
+        android:id="@+id/item_eat"
+        android:title="식사"
+        android:orderInCategory="1"
+        />
+
+    <item
+        android:id="@+id/item_health"
+        android:title="운동"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_work"
+        android:title="일"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_shopping"
+        android:title="쇼핑"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_hobby"
+        android:title="취미"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_clean"
+        android:title="집안일"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_movie"
+        android:title="영화"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_walk"
+        android:title="걷기"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_study"
+        android:title="공부"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_internet"
+        android:title="인터넷"
+        app:showAsAction="never"
+        />
+
+</menu>
