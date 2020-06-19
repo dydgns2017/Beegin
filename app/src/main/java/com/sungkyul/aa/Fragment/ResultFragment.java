@@ -154,10 +154,14 @@ public class ResultFragment extends Fragment {
             if(Integer.parseInt(timeMinute) < 10) timeMinute = "0" + timeMinute;
             timedata = timeHour + " : " + timeMinute;
 
+
+            //이미지 리소스를 가져오기위한 쿼리문
             getImgsrc = "Select * FROM user_activity WHERE activityname = " + "'" +activityname +"'";
+            Log.i(this.getClass().getName() , "getImgsr --> " + getImgsrc );
             Cursor cursor1 = db.rawQuery(getImgsrc,null);
             cursor1.moveToNext();
             resource = cursor1.getInt(2);
+
 
 
             // 파이차트를 쓰기위해

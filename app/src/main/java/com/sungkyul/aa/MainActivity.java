@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/01 09:00:00', '2020/06/01 12:00:00', '3:0:0' )");
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/02 09:00:00', '2020/06/02 12:00:00', '3:0:0' )");
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/03 09:00:00', '2020/06/03 11:00:00', '2:0:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/04 09:00:00', '2020/06/04 12:00:00', '3:0:0' )");
+//        db.execSQL("DELETE FROM time_db WHERE activityname = '은왜'");
         db.close();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, homeFragment).commit();
