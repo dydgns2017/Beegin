@@ -42,10 +42,11 @@ public class PlanFragment extends Fragment {
     public static myDBHelper myDBHelper;
     public static SQLiteDatabase db;
 
-
-
+    int i=0;
+    int length;
 
     FloatingActionButton btnAddplan;
+
     public PlanFragment() {
         // Required empty public constructor
     }
@@ -55,8 +56,6 @@ public class PlanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_plan, null);
-
-
 
         ListView listview ;
         ListViewAdapter adapter = new ListViewAdapter();
@@ -71,15 +70,28 @@ public class PlanFragment extends Fragment {
         // 리스트뷰 참조 및 Adapter달기
         listview = (ListView) view.findViewById(R.id.listview1);
 
-        // 첫 번째 아이템 추가.
-        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_background),
-                "Box", 30) ;
-        // 두 번째 아이템 추가.
-        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_background),
-                "Circle", 40) ;
-        // 세 번째 아이템 추가.
-        adapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_background),
-                "Ind", 100) ;
+        myDBHelper = new myDBHelper(getActivity());
+        db = myDBHelper.getReadableDatabase();
+        Cursor cursor;
+        cursor = db.rawQuery("SELECT planname, activityname, img_src, timegoal FROM user_plan;", null);
+
+        while(cursor.moveToNext()){
+
+           String planname = cursor.getString(0);
+           String activityName = cursor.getString(1);
+           int img_src = cursor.getInt(2);
+           String timgGoal = cursor.getString(3);
+
+//            public void addItem(Drawable icon, String title, String  currentTime, String GoalTime , int progressBar) {
+            // 첫 번째 아이템 추가.
+            adapter.addItem(ContextCompat.getDrawable(getActivity(), img_src),
+                   planname, "00:00", timgGoal, 30);
+/*
+            Log.i(this.getClass().getName(),"이게 제일 중요!! -> "+ posterID[i] + posterText[i] + "-->" + i);*/
+            i++;
+            length = i;
+        }
+
 
         listview.setAdapter(adapter);
 

@@ -24,6 +24,14 @@ public class myDBHelper extends SQLiteOpenHelper {
 
         String[] posterText = text.split(" ");
 
+        // user_plan 생성
+        db.execSQL("CREATE TABLE user_plan ( " +
+                "pk INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                "planname TEXT NOT NULL, " +
+                "activityname TEXT NOT NULL, " +
+                "img_src INTEGER, " +
+                "timegoal TEXT );");
+
         // user_activity 생성
         db.execSQL("CREATE TABLE user_activity ( " +
                 "pk INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
@@ -39,16 +47,6 @@ public class myDBHelper extends SQLiteOpenHelper {
                 "timedata TEXT );");
 
 
-        // user_plan 생성
-        db.execSQL("CREATE TABLE user_plan ( " +
-                "pk INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
-                "planname TEXT NOT NULL, " +
-                "activityname TEXT NOT NULL, " +
-                "img_src INTEGER, " +
-                "timegoal TEXT );");
-
-
-
         for(int i=0; i<posterID.length; i++){
             db.execSQL("INSERT INTO user_activity(activityname, img_src) VALUES ('" + posterText[i] + "', '" + posterID[i] + "');");
         }
@@ -56,13 +54,14 @@ public class myDBHelper extends SQLiteOpenHelper {
     }
 
     public void plan_insert(SQLiteDatabase db, String planname , String activityName, Integer img_src, String timegoal){
-        Log.i(this.getClass().getName(),activityName + img_src);
-        db.execSQL("INSERT INTO user_plan(planname ,activityname, img_src, timegoal) VALUES ('" + planname + "' , '" + activityName + "', '" + img_src + "' , '" + timegoal + "');");
+        Log.i(this.getClass().getName(),planname + " - " + activityName + " - " + img_src + " - " + timegoal + " - ");
+        db.execSQL("INSERT INTO user_plan(planname ,activityname, img_src, timegoal) " +
+                "VALUES ('" + planname + "' , '" + activityName + "', '" + img_src + "' , '" + timegoal + "');");
     }
 
 
     public void plan_delete(SQLiteDatabase db, String planname){
-        db.execSQL("DELETE FROM user_activity WHERE activityname = '" +  planname + "';");
+        db.execSQL("DELETE FROM user_plan WHERE activityname = '" +  planname + "';");
     }
 
 
@@ -73,6 +72,7 @@ public class myDBHelper extends SQLiteOpenHelper {
 
     public void activity_delete(SQLiteDatabase db, String activityName){
         db.execSQL("DELETE FROM user_activity WHERE activityname = '" +  activityName + "';");
+        db.execSQL("DELETE FROM time_db WHERE activityname = '" +  activityName + "';");
     }
 
     public void insert(SQLiteDatabase db, String activityName, String timeStart, String timeEnd, String timeGap){

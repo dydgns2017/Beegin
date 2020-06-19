@@ -132,8 +132,10 @@ public class AddPlanActivity extends Activity {
 
 
                 Log.i(this.getClass().getName(),"플랜 입력값 -> "+ "" + edt_add_name.getText().toString()
-                        + "" + posterText[index] + "--" +  posterID[index] + "--" + timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute());
-//                myDBHelper.plan_insert(db, edt_add_name.getText().toString(), posterText[index], posterID[index], timePicker.get );
+                        + "" + posterText[index] + "--" +  posterID[index] + "--" +
+                        ((timePicker.getCurrentHour()*60) + timePicker.getCurrentMinute()) );
+                myDBHelper.plan_insert(db, edt_add_name.getText().toString(), posterText[index], posterID[index],
+                        ""+((timePicker.getCurrentHour()*60) + timePicker.getCurrentMinute()) );
 
 
                 startActivity(intent);
