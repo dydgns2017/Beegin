@@ -1,7 +1,9 @@
 package com.sungkyul.aa.Fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -45,6 +47,7 @@ public class ChatFragment extends Fragment {
 
         boardList = (ListView)rootview.findViewById(R.id.boardList);
 
+        // 게시글 추가 버튼
         FloatingActionButton btnAddboard = (FloatingActionButton) rootview.findViewById(R.id.btnAddBoard);
         btnAddboard.setOnClickListener(new View.OnClickListener() {
             @Override

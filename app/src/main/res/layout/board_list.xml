@@ -90,17 +90,16 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:src="@drawable/login"
-                android:layout_gravity="right"
+                android:layout_height="15dp"
+                android:src="@drawable/baseline_access_time_black_18dp"
+                android:layout_gravity="right|center_vertical"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="20dp"
                 android:text="YYYY/MM/DD"
-                android:layout_gravity="right"
-                android:gravity="right"
+                android:layout_gravity="right|center_vertical"
                 android:id="@+id/txt_board_date"
                 />
 
