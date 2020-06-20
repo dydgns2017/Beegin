@@ -1,7 +1,9 @@
 package com.sungkyul.aa.Fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,6 +21,10 @@ import com.sungkyul.aa.Board.BoardItemView;
 import com.sungkyul.aa.R;
 import com.sungkyul.aa.Result.ResultItem;
 import com.sungkyul.aa.chatFragment.AddContentActivity;
+import com.sungkyul.aa.httpServlet.phpApi;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -45,6 +51,7 @@ public class ChatFragment extends Fragment {
 
         boardList = (ListView)rootview.findViewById(R.id.boardList);
 
+        // 게시글 추가 버튼
         FloatingActionButton btnAddboard = (FloatingActionButton) rootview.findViewById(R.id.btnAddBoard);
         btnAddboard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,9 +62,31 @@ public class ChatFragment extends Fragment {
         });
 
         final BoardAdapter adapter = new BoardAdapter();
-        adapter.addItem(new BoardItem("제목 sample1", 1, "원용", "2020/06/19"));
-        adapter.addItem(new BoardItem("제목 sample2", 2, "혁주", "2020/06/19"));
-        adapter.addItem(new BoardItem("제목 sample3", 3, "용훈", "2020/06/19"));
+
+        // POST 통신으로 게시글 가져오기
+        String serviceName = "getBoard";
+        String Servicedata;
+        Servicedata = "func=" + serviceName;
+        // return json data
+        JSONObject data = phpApi.POSTsend(Servicedata);
+        System.err.println("Data : " + data);
+        try {
+            JSONObject useData = data.getJSONObject("data");
+            int all_count = useData.getInt("all_count");
+            for(int i=0; i<all_count; i++){
+                JSONObject getUserBoard = useData.getJSONObject("0");
+                String username = getUserBoard.getString("username");
+                String title = getUserBoard.getString("title");
+                String timestamp = getUserBoard.getString("timestamp");
+                adapter.addItem(new BoardItem(title, 1, username, timestamp));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+//        adapter.addItem(new BoardItem("제목 sample1", 1, "원용", "2020/06/19"));
+//        adapter.addItem(new BoardItem("제목 sample2", 2, "혁주", "2020/06/19"));
+//        adapter.addItem(new BoardItem("제목 sample3", 3, "용훈", "2020/06/19"));
 
         //어댑터연결
         boardList.setAdapter(adapter);
@@ -103,9 +132,6 @@ public class ChatFragment extends Fragment {
             boardItemView.setCommentCount(boardItem.getCommentCount() +"");
             boardItemView.setDate(boardItem.getDate());
             boardItemView.setUserId(boardItem.getUserid());
-
-
-
             return boardItemView;
         }
     }
