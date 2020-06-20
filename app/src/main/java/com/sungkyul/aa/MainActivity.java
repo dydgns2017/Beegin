@@ -203,9 +203,7 @@ public class MainActivity extends AppCompatActivity {
                         ft.replace(R.id.main_frame, planFragment);
                         ft.commit();
 */
-
                         return true;
-
 
                     case R.id.nav_result :
                         setTitle("결과");
@@ -230,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_chat:
                         setTitle("자유 게시판");
+                        // Reload current fragment
                         mMainNav.setItemBackgroundResource(R.color.colorBlue);
                         Utils.setStatusBarColor(activity, Utils.StatusBarColorType.BLUE_STATUS_BAR);
                         getSupportActionBar().setBackgroundDrawable(

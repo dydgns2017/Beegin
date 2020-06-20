@@ -72,7 +72,7 @@ public class AddContentActivity extends Activity {
                 }
 
                 // timestamp
-                String timestamp = new SimpleDateFormat("yyyy|MM|dd|HH|mm|ss").format(new Date());
+                String timestamp = new SimpleDateFormat("yyyy.MM.dd").format(new Date());
 
                 // data set
                 String serviceName = "writeBoard";
