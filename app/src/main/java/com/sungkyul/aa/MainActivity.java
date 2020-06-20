@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/05/03 15:00:00', '2020/05/03 19:00:00', '4:0:0' )");
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/05/06 15:00:00', '2020/05/06 15:00:33', '0:0:33' )");
 //        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/05/07 09:00:00', '2020/05/07 23:00:00', '14:0:0' )");
+//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/05/17 09:00:00', '2020/05/07 23:00:00', '14:0:0' )");
 
         db.close();
 
