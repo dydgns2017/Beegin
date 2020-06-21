@@ -36,6 +36,7 @@ import java.util.ArrayList;
 public class ChatFragment extends Fragment {
 
     ListView boardList;
+    SharedPreferences pref;
 
 
     public ChatFragment() {
@@ -50,12 +51,18 @@ public class ChatFragment extends Fragment {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_chat, null,false);
 
         boardList = (ListView)rootview.findViewById(R.id.boardList);
+        pref =  this.getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
 
         // 게시글 추가 버튼
         FloatingActionButton btnAddboard = (FloatingActionButton) rootview.findViewById(R.id.btnAddBoard);
         btnAddboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences.Editor editor = pref.edit();
+                // 로그인 확인
+                if ( !(pref.contains("username")) ){
+                    return;
+                }
                 Intent intent = new Intent(getActivity().getApplicationContext(), AddContentActivity.class);
                 startActivity(intent);
             }
