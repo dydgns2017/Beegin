@@ -6,11 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -100,5 +105,32 @@ public class PlanFragment extends Fragment {
     }
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_plan, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
+
+    // selected option item
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int curid = item.getItemId();
+
+        switch (curid) {
+            case R.id.plan_nav_refresh:
+                Log.i(this.getClass().getName(), "새로고침 클릭");
+                refresh();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this);
+        ft.attach(this);
+        ft.commit();
+    }
 }
