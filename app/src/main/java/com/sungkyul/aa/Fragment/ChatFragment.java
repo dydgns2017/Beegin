@@ -2,10 +2,12 @@ package com.sungkyul.aa.Fragment;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -20,8 +22,10 @@ import com.sungkyul.aa.Board.BoardItem;
 import com.sungkyul.aa.Board.BoardItemView;
 import com.sungkyul.aa.R;
 import com.sungkyul.aa.Result.ResultItem;
+import com.sungkyul.aa.SignUp;
 import com.sungkyul.aa.chatFragment.AddContentActivity;
 import com.sungkyul.aa.httpServlet.phpApi;
+import com.sungkyul.aa.loginActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,6 +65,18 @@ public class ChatFragment extends Fragment {
                 SharedPreferences.Editor editor = pref.edit();
                 // 로그인 확인
                 if ( !(pref.contains("username")) ){
+                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    alertDialog.setTitle("로그인 필요");
+                    alertDialog.setMessage("로그인이 필요한 기능입니다. \n먼저 로그인을 해주세요.");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "확인",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    Intent intent = new Intent(getActivity().getApplicationContext(), loginActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
+                    alertDialog.show();
                     return;
                 }
                 Intent intent = new Intent(getActivity().getApplicationContext(), AddContentActivity.class);
