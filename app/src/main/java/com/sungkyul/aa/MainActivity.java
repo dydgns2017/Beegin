@@ -108,21 +108,26 @@ public class MainActivity extends AppCompatActivity {
 
 
         db = myDBHelper.getWritableDatabase();
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/01 09:00:00', '2020/06/01 12:00:00', '3:0:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/02 09:00:00', '2020/06/02 12:00:00', '3:0:0' )");
-//        db.execSQL("DELETE FROM time_db WHERE activityname = '영화'");
-//        db.execSQL("DELETE FROM time_db WHERE activityname = '일'");
-//        db.execSQL("DELETE FROM time_db WHERE activityname = '인터넷'");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/18 15:00:00', '2020/06/18 17:00:00', '2:0:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('일', '2020/06/18 17:10:00', '2020/06/18 18:40:00', '1:30:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('식사', '2020/06/18 18:50:00', '2020/06/18 19:30:00', '0:40:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('인터넷', '2020/06/18 20:05:00', '2020/06/18 20:55:00', '0:50:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/19 15:00:00', '2020/05/02 17:00:00', '2:0:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/19 15:00:00', '2020/05/03 19:00:00', '4:0:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/19 15:00:00', '2020/05/06 15:00:33', '0:0:33' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/19 09:00:00', '2020/05/07 23:00:00', '14:0:0' )");
-//        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/19 09:00:00', '2020/05/07 23:00:00', '14:0:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/01 09:00:00', '2020/06/01 12:00:00', '3:0:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/02 09:00:00', '2020/06/02 12:00:00', '3:0:0' )");
+        db.execSQL("DELETE FROM time_db WHERE activityname = '영화'");
+        db.execSQL("DELETE FROM time_db WHERE activityname = '일'");
+        db.execSQL("DELETE FROM time_db WHERE activityname = '인터넷'");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/18 15:00:00', '2020/06/18 17:00:00', '2:0:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('일', '2020/06/18 17:10:00', '2020/06/18 18:40:00', '1:30:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('식사', '2020/06/18 18:50:00', '2020/06/18 19:30:00', '0:40:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('인터넷', '2020/06/18 20:05:00', '2020/06/18 20:55:00', '0:50:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('영화', '2020/06/19 15:00:00', '2020/06/19 17:00:00', '2:0:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('여가활동', '2020/06/19 15:00:00', '2020/06/19 19:00:00', '4:0:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('인터넷', '2020/06/19 15:00:00', '2020/06/19 15:00:33', '0:0:33' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('쇼핑', '2020/06/19 09:00:00', '2020/06/19 23:00:00', '14:0:0' )");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('공부', '2020/06/19 09:00:00', '2020/06/19 23:00:00', '14:0:0' )");
 
+
+        myDBHelper.plan_insert(db, "테스트1", "수면", 2131165339, "120", "2020/05/20 12:44:01");
+        db.execSQL("INSERT INTO time_db(activityname, timestart, timeend, timedata) values ('수면', '2020/06/21 09:00:00', '2020/06/21 11:00:00', '2:0:0' )");
+
+        myDBHelper.plan_insert(db, "테스트2", "이동", 2131165340, "180", "2020/05/20 12:44:01");
         db.close();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, homeFragment).commit();

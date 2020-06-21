@@ -55,7 +55,7 @@ public class myDBHelper extends SQLiteOpenHelper {
     }
 
     public void plan_insert(SQLiteDatabase db, String planname , String activityName, Integer img_src, String timegoal, String currentTime){
-        Log.i(this.getClass().getName(),planname + " - " + activityName + " - " + img_src + " timegoal- " + timegoal + " - ");
+        Log.i(this.getClass().getName(),planname + " - " + activityName + " - " + img_src + " timegoal- " + timegoal + " - " + currentTime);
         db.execSQL("INSERT INTO user_plan(planname ,activityname, img_src, currenttime , timegoal) " +
                 "VALUES ('" + planname + "' , '" + activityName + "', '" + img_src + "' , '" + currentTime + "' , '" +  timegoal + "');");
     }
